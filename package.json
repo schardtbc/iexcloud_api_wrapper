@@ -1,0 +1,40 @@
+{
+  "name": "ts-package-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config jestconfig.json",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schardtbc/ts-package-template.git"
+  },
+  "keywords": [],
+  "author": "Bruce C. Schardt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schardtbc/ts-package-template/issues"
+  },
+  "homepage": "https://github.com/schardtbc/ts-package-template#readme",
+  "devDependencies": {
+    "@types/jest": "23.3.11",
+    "jest": "23.6.0",
+    "prettier": "1.15.3",
+    "ts-jest": "23.10.5",
+    "tslint": "5.12.0",
+    "tslint-config-prettier": "1.17.0",
+    "typescript": "3.2.2"
+  },
+  "files": [
+    "lib/**/*"
+  ]
+}

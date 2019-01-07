@@ -5,7 +5,7 @@ This is a package template for using Typescript with Node.js
 # Installation
 
 This repository is not a node package. You cannot use npm install, instead use the following
-proceedure to make a new repro that is a copy of the template. 
+procedure to make a new repro that is a copy of the template. 
 
 The prceedure is descripbed by github here https://help.github.com/articles/duplicating-a-repository/
 

@@ -1,17 +1,3 @@
-# Typescript Package Template
-
-This is a package template for using Typescript with Node.js
-
-# Installation
-
-This repository is not a node package. You cannot use npm install, instead use the following
-proceedure to make a new repro that is a copy of the template. 
-
-The prceedure is descripbed by github here https://help.github.com/articles/duplicating-a-repository/
-
-The required commands are listed below as a model for a shell script
-
-```
 #!/bin/bash
 
 # one positional parameter which is new package name
@@ -51,5 +37,3 @@ npm install
 git push origin master
 
 exit
-```
-

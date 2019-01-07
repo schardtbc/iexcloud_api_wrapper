@@ -1,7 +1,7 @@
 {
-  "name": "replace_with_package_name",
+  "name": "ts-package-template",
   "version": "1.0.0",
-  "description": "Replace Package Description",
+  "description": "ts-package-tempate Description",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {

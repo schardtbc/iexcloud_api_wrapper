@@ -5,7 +5,7 @@ interface KVP {
 }
 
 export const tops = async (symbol: string): Promise<TOPS[]> => {
-  const endpoint = `/tops?symbol=${symbol}`;
+  const endpoint = `/tops?symbols=${symbol}`;
   const data: KVP[] = await iexApiRequest(endpoint);
   const result = data.map((o: KVP) => Object.assign(new TOPS(), o));
   return result;

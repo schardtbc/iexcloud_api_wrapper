@@ -10,11 +10,21 @@ const pk = process.env.IEXCLOUD_PUBLIC_KEY;
 
 const apiversion = process.env.IEXCLOUD_API_VERSION;
 
-const token = `&token=${pk}`;
+const aToken = `&token=${pk}`;
+
+const qToken = `?token=${pk}`;
+
+const chooseToken = (str:string) => {
+  if (str.includes("?")) {
+    return aToken
+  } else {
+    return qToken
+  }
+}
 
 export const iexApiRequest = (endpoint: string): Promise<any> => {
-  const iexRestURL = baseURL + apiversion + endpoint + token;
-  console.log( iexRestURL );
+  const iexRestURL = baseURL + apiversion + endpoint + chooseToken(endpoint);
+  // console.log( iexRestURL );
   const result: Promise<any> = axios
     .get(iexRestURL)
     .then(res => res.data);

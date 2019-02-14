@@ -4,27 +4,22 @@ interface KVP {
   [k: string]: any;
 }
 
-type SentimentType = "daily" | "minute";
+export type SentimentType = "daily" | "minute";
 
 export const socialSentiment = async (
   symbol: string,
   type: SentimentType = "daily",
   date: string = ""
 ): Promise<null | SocialSentiment | SocialSentiment[]> => {
-  let endpoint = `/stock/${symbol}/sentinent/${type}/`;
+  let endpoint = `/stock/${symbol}/sentiment/${type}`;
   if (date) {
-    endpoint = endpoint + date.replace(/-/g, "");
+    endpoint = endpoint +"/"+ date.replace(/-/g, "");
   }
-  if (type === "daily") {
+  if (type.includes("daily")) {
     const data: KVP = await iexApiRequest(endpoint);
-    const result: SocialSentiment = data.map((o: KVP) => {
-      const r = Object.assign(new SocialSentiment(), o);
-      r.symbol = symbol;
-      return r;
-    });
+    const result: SocialSentiment = Object.assign(new SocialSentiment(),data);
     return result;
-  }
-  if (type === "minute") {
+  } else {
     const data: KVP[] = await iexApiRequest(endpoint);
     const result = data.map((o: KVP) => {
       const r = Object.assign(new SocialSentiment(), o);

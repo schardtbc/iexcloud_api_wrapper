@@ -4,19 +4,20 @@ interface KVP {
   [k: string]: any;
 }
 
-export const deepTrades = async (symbol: string): Promise<DEEPTrades[]> => {
-  const endpoint = `/deep/trades?${symbol}`;
+export const deepTrades = async (symbol: string): Promise<DEEPTrade[]> => {
+  const endpoint = `/deep/trades?symbols=${symbol}`;
   const data: KVP = await iexApiRequest(endpoint);
   // console.log(data);
-  const result: any[] = data.cashflow;
-  return result.map((o: KVP) => {
-    const r = Object.assign(new DEEPTrades(), o);
-    r.symbol = symbol;
+  const result: DEEPTrade[] = Object.keys(data).map( (key:string)  => {
+    const r: DEEPTrade = Object.assign(new DEEPTrade(), data.key);
+    r.symbol = key;
     return r;
   });
+  
+  return result;
 };
 
-export interface IEXDEEPTrades {
+export interface IEXDEEPTrade {
   symbol: string;
   price: number;
   size: number;
@@ -29,7 +30,7 @@ export interface IEXDEEPTrades {
   timestamp: number;
 }
 
-export class DEEPTrades implements IEXDEEPTrades {
+export class DEEPTrade implements IEXDEEPTrade {
   public symbol: string = "";
   public price: number = 0;
   public size: number = 0;

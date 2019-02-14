@@ -4,15 +4,16 @@ interface KVP {
   [k: string]: any;
 }
 
-export const ohlc = async (symbol: string): Promise<OHLC[]> => {
+export const ohlc = async (symbol: string): Promise<OHLC> => {
   const endpoint = `/stock/${symbol}/ohlc`;
   const data: KVP = await iexApiRequest(endpoint);
-  const tmp: KVP[] = data.earnings;
-  const result = tmp.map((o: KVP) => {
-    const r = Object.assign(new OHLC(), o);
-    r.symbol = symbol;
-    return r;
-  });
+  const result = new OHLC();
+  result.open = data.open.price;
+  result.close = data.close.price;
+  result.high = data.high;
+  result.close = data.close;
+  result.openTime = data.openTime;
+  result.closeTime = data.closeTime;
   return result;
 };
 

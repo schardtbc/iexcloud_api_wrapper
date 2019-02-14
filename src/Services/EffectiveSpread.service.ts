@@ -7,7 +7,7 @@ interface KVP {
 export const effectiveSpread = async (
   symbol: string
 ): Promise<EffectiveSpread[]> => {
-  const endpoint = `/stock/${symbol}/effective-spread/`;
+  const endpoint = `/stock/${symbol}/effective-spread`;
   const data: KVP[] = await iexApiRequest(endpoint);
   const result = data.map((o: KVP) => {
     const r = Object.assign(new EffectiveSpread(), o);

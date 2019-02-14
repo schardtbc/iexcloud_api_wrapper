@@ -8,7 +8,7 @@ export const estimates = async (
   symbol: string,
   lastN: number = 1
 ): Promise<Estimates[]> => {
-  const endpoint = `/stock/${symbol}/estimates/${lastN}/`;
+  const endpoint = `/stock/${symbol}/estimates/${lastN}`;
   const data: KVP = await iexApiRequest(endpoint);
   const tmp: KVP[] = data.estimates;
   const result = tmp.map((o: KVP) => {

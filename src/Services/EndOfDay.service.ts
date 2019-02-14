@@ -15,21 +15,21 @@ export const endOfDay = async (
   chartReset: boolean = false,
   chartSimplify: boolean = false
 ): Promise<EndOfDay[]> => {
-  let endpoint = `/stock/${symbol}/chart/${period}`;
+  let endpoint = `/stock/${symbol}/chart/${period}?chartCloseOnly=false`;;
   if (chartLastN > 0) {
-    endpoint = endpoint + `?chartLast=${chartLastN}`;
+    endpoint = endpoint + `&chartLast=${chartLastN}`;
   }
   if (chartInterval > 1) {
-    endpoint = endpoint + `?chartInterval=${chartInterval}`;
+    endpoint = endpoint + `&chartInterval=${chartInterval}`;
   }
   if (changeFromClose) {
-    endpoint = endpoint + `?changeFromClose=true`;
+    endpoint = endpoint + `&changeFromClose=true`;
   }
   if (chartReset) {
-    endpoint = endpoint + `?chartReset=true`;
+    endpoint = endpoint + `&chartReset=true`;
   }
   if (chartSimplify) {
-    endpoint = endpoint + `?chartSimplify=true`;
+    endpoint = endpoint + `&chartSimplify=true`;
   }
   const data: KVP[] = await iexApiRequest(endpoint);
   const result = data.map((o: KVP) => {

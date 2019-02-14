@@ -9,7 +9,7 @@ type PriceType = "Open" | "Close";
 export const officialPrice = async (
   symbol: string
 ): Promise<DEEPOfficialPrice> => {
-  const endpoint = `/deep/officialPrice?symbols=${symbol}`;
+  const endpoint = `/deep/official-price?symbols=${symbol}`;
   const data: KVP = await iexApiRequest(endpoint);
   const result = Object.assign(new DEEPOfficialPrice(), data);
   return result;

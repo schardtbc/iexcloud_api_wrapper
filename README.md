@@ -1,4 +1,4 @@
-iexcloud_api_wrapper
+# iexcloud_api_wrapper
 
 [![CircleCI](https://circleci.com/gh/schardtbc/iex-api-wrapper.svg?style=svg)](https://circleci.com/gh/schardtbc/iexcloud-api-wrapper)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) 
@@ -7,6 +7,8 @@ iexcloud_api_wrapper
 A Typescript wrapper for the new iexcloud market data API from IEX Group Inc. All data is returned as Promises for asynchronous data requests.
 
 ## Usage
+
+- See USAGE.md file for complete interface definition and call signitures
 
 Use the npm cli to install as a dependancy into your project
 
@@ -33,15 +35,54 @@ To test that everything installed correctly and the .env file is properly setup 
 ```javascript
 // reminder: this is an async interface ...it's promises all the way down
 
-import iex from "iexcloud_api_wrapper"
+const  iex = require( 'iexcloud_api_wrapper' )
 
-// Using an IIFE
-(async (sym) => {
+const quote = async (sym) => {
     const quoteData = await iex.quote(sym);
     // do something with returned quote data
-    console.log(q)
-})("WDC")
+    console.log(quoteData)
+};
 
+quote("WDC");
+
+//  Quote {
+//   symbol: 'WDC',
+//   companyName: 'Western Digital Corporation',
+//   calculationPrice: 'tops',
+//   open: 47.56,
+//   openTime: 1550154600850,
+//   close: 47.69,
+//   closeTime: 1550091600563,
+//   high: 48.75,
+//   low: 47.43,
+//   latestPrice: 47.89,
+//   latestSource: 'IEX real time price',
+//   latestTime: '11:53:07 AM',
+//   latestUpdate: 1550163187646,
+//   latestVolume: 2660380,
+//   iexRealtimePrice: 47.89,
+//   iexRealtimeSize: 1,
+//   iexLastUpdated: 1550163187646,
+//   delayedPrice: 47.925,
+//   delayedPriceTime: 1550162368700,
+//   extendedPrice: 47.56,
+//   extendedChange: -0.33,
+//   extendedChangePercent: -0.00689,
+//   extendedPriceTime: 1550189098346,
+//   previousClose: 47.69,
+//   change: 0.2,
+//   changePercent: 0.00419,
+//   iexMarketPercent: 0.03971124425833904,
+//   iexVolume: 105647,
+//   avgTotalVolume: 8340178,
+//   iexBidPrice: 47.8,
+//   iexBidSize: 100,
+//   iexAskPrice: 47.89,
+//   iexAskSize: 100,
+//   marketCap: 13928854390,
+//   week52High: 106.96,
+//   week52Low: 33.83,
+//   ytdChange: 0.25066151071615267 }
 ```
 
 ## About iexcloud
@@ -52,7 +93,6 @@ Using iexcloud requires [registration](https://iexcloud.io/cloud-login#/register
 
 A majority of the endpoints are charged a usage free which varies by the source and type of data returned. All IEX Group sourced data is free. 
 
-
 Each endpoint is assigned a cost in terms of message units.
 
 | Plan | Monthly Message Unit Allotment | Monthy Fee
@@ -61,14 +101,14 @@ Each endpoint is assigned a cost in terms of message units.
 | Launch | 5,000,000 | $9 |
 | Scale | 1,000,000,000 | $ 499 |
 
-see https://iexcloud.io/pricing/
+see https://iexcloud.io/pricing/ for current plans, rates
 
 
-## Api reference
+## Api reference documentation
 
 https://iexcloud.io/docs/api/#introduction
 
-## Attribution 
+## Attribution to IEX
 
 Attribution is required of all users of iexcloud. Put “Powered by IEX Cloud” somewhere on your site or app, and link that text to https://iexcloud.io. Alternately, the attribution link can be included in your terms of service.
 
@@ -79,11 +119,13 @@ Attribution is required of all users of iexcloud. Put “Powered by IEX Cloud”
 Below is a list of the iexcloud APIs that have ([x]) and have not ([ ]) been implemented by this package.
 
 ### Account
+
 |     | Endpoint       | Message Units | per |
 |-----|----------------|---------------:|-----|
 | [x] | MetaData | 0 | as in free
 | [x] | Usage | 0 | as in free
 | [x] | Pay as you go | 0 | as in free
+
 
 ### Stocks
 |     | Endpoint       | Message Units | per |
@@ -147,36 +189,37 @@ Below is a list of the iexcloud APIs that have ([x]) and have not ([ ]) been imp
 | [ ] | Bonds Symbols
 | [ ] | Crypto Symbols
 
-### Investors Exchange Data
-|     | Endpoint       | Message Units | per |
-|-----|----------------|---------------:|-----|
-| [x] | TOPS | 0 |
-| [x] | TOPS Last | 0 |
-| [ ] | DEEP | 0 |
-| [x] | DEEP Auction | 0 |
-| [x] | DEEP Book | 0 |
-| [ ] | DEEP Operational Halt Status | 0 |
-| [x] | DEEP Official Price | 0 |
-| [ ] | DEEP Security Event | 0 |
-| [ ] | DEEP Short Sale Price Tst Status | 0 |
-| [ ] | DEEP System Event | 0 |
-| [x] | DEEP Trades | 0 |
-| [ ] | DEEP Trade Break | 0 |
-| [ ] | DEEP Trading Status | 0 |
-| [ ] | Listed Regulation SHO Threshold Securities List | 0 |
-| [ ] | Listed Short Interest List | 0 |
-| [ ] | Stats Historical Daily | 0 | 
-| [ ] | Stats Historical Summary | 0 |
-| [ ] | Stats Intraday | 0 |
-| [ ] | Stats Recent | 0 |
-| [ ] | Stats Records | 0 |
+### Investors Exchange Data [Free]
+
+|     | Endpoint       |
+|-----|----------------|
+| [x] | TOPS | 
+| [x] | TOPS Last | 
+| [ ] | DEEP | 
+| [x] | DEEP Auction | 
+| [x] | DEEP Book |
+| [ ] | DEEP Operational Halt Status |
+| [x] | DEEP Official Price | 
+| [ ] | DEEP Security Event |
+| [ ] | DEEP Short Sale Price Tst Status | 
+| [ ] | DEEP System Event |
+| [x] | DEEP Trades |
+| [ ] | DEEP Trade Break |
+| [ ] | DEEP Trading Status |
+| [ ] | Listed Regulation SHO Threshold Securities List |
+| [ ] | Listed Short Interest List |
+| [ ] | Stats Historical Daily |
+| [ ] | Stats Historical Summary |
+| [ ] | Stats Intraday |
+| [ ] | Stats Recent | 
+| [ ] | Stats Records |
 
 ### API System Metadata
 |     | Endpoint       | Message Units | per |
 |-----|----------------|---------------:|-----|
 | [ ] | Status | 0 |
 
-### In Development at IEX Group
+## In Development at IEX Group
 
 - FOREX CURRANCIES
 - OPTIONS

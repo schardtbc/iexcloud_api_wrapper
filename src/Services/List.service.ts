@@ -6,7 +6,7 @@ interface KVP {
   [k: string]: any;
 }
 
-type ListType =
+export type ListType =
   | "mostactive"
   | "gainers"
   | "losers"

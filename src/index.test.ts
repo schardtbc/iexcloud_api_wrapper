@@ -102,7 +102,7 @@ test("list", async () => {
   );
 });
 test("logo", async () => {
-  expect(await iex.logo("AAPL")).toBeInstanceOf(iex.Logo);
+  expect(await iex.logoURL("AAPL")).toBeInstanceOf(iex.Logo);
 });
 test("marketSymbols", async () => {
   expect(await iex.marketSymbols()).toEqual(

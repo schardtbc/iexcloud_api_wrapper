@@ -4,7 +4,7 @@ interface KVP {
   [k: string]: any;
 }
 
-export const logo = async (symbol: string): Promise<Logo> => {
+export const logoURL = async (symbol: string): Promise<Logo> => {
   const endpoint = `/stock/${symbol}/logo`;
   const data: KVP = await iexApiRequest(endpoint);
   const result = Object.assign(new Logo(), data);

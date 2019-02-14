@@ -21,7 +21,7 @@ Each endpoint is assigned a cost in terms of message units.
 |------|--------------------------------:|:------------|
 | Free | 500,000 | Free
 | Launch | 5,000,000 | $9 |
-| Scale | 1,000,000,000 | $ 400 |
+| Scale | 1,000,000,000 | $ 499 |
 
 see https://iexcloud.io/pricing/
 

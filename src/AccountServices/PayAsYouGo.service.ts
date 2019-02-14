@@ -10,10 +10,10 @@ const sk = process.env.IEXCLOUD_SECRET_KEY;
 
 const apiversion = process.env.IEXCLOUD_API_VERSION;
 
-const token = `&token=${sk}`;
+const token = `?token=${sk}`;
 
 export const enablePayAsYouGo = (): Promise<any> => {
-  const restURL = baseURL + apiversion + /account/aagoopsuyy;
+  const restURL = baseURL + apiversion + "/account/payasyougo" + token;
   // console.log( restURL );
   const result: Promise<any> = axios
     .post(restURL, { token: sk, allow: true })
@@ -22,7 +22,7 @@ export const enablePayAsYouGo = (): Promise<any> => {
 };
 
 export const disablePayAsYouGo = (): Promise<any> => {
-  const restURL = baseURL + apiversion + /account/aagoopsuyy;
+  const restURL = baseURL + apiversion + "/account/payasyougo" + token;
   // console.log( restURL );
   const result: Promise<any> = axios
     .post(restURL, { token: sk, allow: false })

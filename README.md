@@ -6,6 +6,44 @@ iexcloud_api_wrapper
 
 A Typescript wrapper for the new iexcloud market data API from IEX Group Inc. All data is returned as Promises for asynchronous data requests.
 
+## Usage
+
+Use the npm cli to install as a dependancy into your project
+
+```
+npm install --save git+https://git@github.com/schardtbc/iexcloud_api_wrapper
+```
+
+then in your .env file add the following keys
+
+```
+IEXCLOUD_API_VERSION = "beta"
+IEXCLOUD_PUBLIC_KEY = "pk_..."
+IEXCLOUD_SECRET_KEY = "sk_..."
+
+# use the pk and sk obtained from your iexcloud account
+# make sure the .env file is in your .gitignore file
+# do not hard code the keys into your application code
+# do not upload the keys to github.
+# you can easily change the keys if they become compromised
+```
+
+To test that everything installed correctly and the .env file is properly setup you can use the following or similar code
+
+```javascript
+// reminder: this is an async interface ...it's promises all the way down
+
+import iex from "iexcloud_api_wrapper"
+
+// Using an IIFE
+(async (sym) => {
+    const quoteData = await iex.quote(sym);
+    // do something with returned quote data
+    console.log(q)
+})("WDC")
+
+```
+
 ## About iexcloud
 
 iexcloud is a product of [IEX Group Inc.]( https://iextrading.com ) which operates the Investors Exchange IEX, a stock exhange for US equities which trades > 9B notational value on a daily basis.

@@ -1,6 +1,6 @@
 # iexcloud_api_wrapper
 
-[![CircleCI](https://circleci.com/gh/schardtbc/iexcloud_api_wrapper.svg?style=svg)](https://circleci.com/gh/schardtbc/iexcloud-api-wrapper)
+[![CircleCI](https://circleci.com/gh/schardtbc/iexcloud_api_wrapper.svg?style=svg)](https://circleci.com/gh/schardtbc/iexcloud_api_wrapper)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) 
 
 

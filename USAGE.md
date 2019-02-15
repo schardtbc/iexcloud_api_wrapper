@@ -97,11 +97,11 @@ export declare const accountUsage: (type: UsageType) => Promise<any>;
 
 ```javascript
 
-export declare const balanceSheet: (symbol: string, period?: string) => Promise<BalanceSheet[]>;
+export declare const balanceSheet: (symbol: string, period?: string, lastN: number =1) => Promise<BalanceSheet[]>;
 
 export declare const book: (symbol: string) => Promise<Book>;
 
-export declare const cashFlowStatement: (symbol: string, period?: string) => Promise<CashFlowStatement[]>;
+export declare const cashFlowStatement: (symbol: string, period?: string, lastN: number =1) => Promise<CashFlowStatement[]>;
 
 export declare type CollectionType = "sector" | "tag" | "list";
 
@@ -140,7 +140,7 @@ export declare const iexApiRequest: (endpoint: string) => Promise<any>;
 
 export declare const iexSymbols: () => Promise<IEXSymbol[]>;
 
-export declare const incomeStatement: (symbol: string, period?: string) => Promise<IncomeStatement[]>;
+export declare const incomeStatement: (symbol: string, period?: string, lastN: number =1) => Promise<IncomeStatement[]>;
 
 export declare const intraday: (symbol: string, chartLastN?: number, chartInterval?: number, changeFromClose?: boolean, chartReset?: boolean, chartSimplify?: boolean) => Promise<Intraday[]>;
 

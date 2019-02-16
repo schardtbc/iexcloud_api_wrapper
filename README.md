@@ -6,6 +6,9 @@
 
 A Typescript wrapper for the new iexcloud market data API from IEX Group Inc. All data is returned as Promises for asynchronous data requests.
 
+A complementary [R package](https://github.com/schardtbc/iexcloudR) is also availiable.
+
+
 ## Usage
 
 - See USAGE.md file for complete interface definition and call signitures

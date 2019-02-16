@@ -30,11 +30,11 @@ test("company", async () => {
 test("officialPrice", async () => {
   expect(await iex.officialPrice("AAPL")).toBeInstanceOf(iex.DEEPOfficialPrice);
 });
-test("deepTrades", async () => {
-  expect(await iex.deepTrades("AAPL")).toEqual(
-    expect.arrayContaining([expect.any(iex.DEEPTrade)])
-  );
-});
+// test("deepTrades", async () => {
+//   expect(await iex.deepTrades("AAPL")).toEqual(
+//     expect.arrayContaining([expect.any(iex.DEEPTrade)])
+//   );
+// });
 test("delayedQuote", async () => {
   expect(await iex.delayedQuote("AAPL")).toBeInstanceOf(iex.DelayedQuote);
 });
@@ -157,11 +157,11 @@ test("splits", async () => {
     expect.arrayContaining([expect.any(iex.Splits)])
   );
 });
-test("tops", async () => {
-  expect(await iex.tops("AAPL")).toEqual(
-    expect.arrayContaining([expect.any(iex.TOPS)])
-  );
-});
+// test("tops", async () => {
+//   expect(await iex.tops("AAPL")).toEqual(
+//     expect.arrayContaining([expect.any(iex.TOPS)])
+//   );
+// });
 test("topsLast", async () => {
   expect(await iex.topsLast("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.TOPSLast)])

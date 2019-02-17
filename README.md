@@ -17,6 +17,10 @@ Use the npm cli to install as a dependancy into your project
 
 ```
 npm install --save git+https://git@github.com/schardtbc/iexcloud_api_wrapper
+
+// OR
+
+npm i iexcloud_api_wrapper
 ```
 
 then in your .env file add the following keys

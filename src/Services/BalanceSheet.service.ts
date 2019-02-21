@@ -4,6 +4,16 @@ interface KVP {
   [k: string]: any;
 }
 
+/**
+ * Pulls balance sheet data. Available quarterly (4 quarters) and annually (4 years)
+ *
+ * - Data Weigthing: 3000 message units per symbol per period
+ *
+ * @param symbol - a market symbol
+ * @param period - "annual" | "quarter"
+ * @returns array of records
+ *
+ */
 export const balanceSheet = async (
   symbol: string,
   period: string = "quarter",

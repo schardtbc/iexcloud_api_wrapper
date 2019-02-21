@@ -48,8 +48,11 @@ export interface IEXEndOfDay {
   low: number;
   close: number;
   volume: number;
-  unadjustedClose: number;
-  unadjustedVolume: number;
+  uOpen: number;
+  uHigh: number;
+  uLow: number;
+  uClose: number;
+  uVolume: number;
   change: number;
   changePercent: number;
   label: string;
@@ -64,8 +67,11 @@ export class EndOfDay implements IEXEndOfDay {
   public low: number = 0;
   public close: number = 0;
   public volume: number = 0;
-  public unadjustedClose: number = 0;
-  public unadjustedVolume: number = 0;
+  public uOpen: number = 0;
+  public uHigh: number = 0;
+  public uLow: number = 0;
+  public uClose: number = 0;
+  public uVolume: number = 0;
   public change: number = 0;
   public changePercent: number = 0;
   public label: string = "";

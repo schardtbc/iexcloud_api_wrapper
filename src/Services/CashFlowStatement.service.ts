@@ -4,6 +4,20 @@ interface KVP {
   [k: string]: any;
 }
 
+/**
+ * Pulls cash flow data. Available quarterly (4 quarters) and annually (4 years)
+ *
+ * - Data Weighting: 1000 message units per symbol per period
+ * - Data Schedule: Updates at 8am, 9am UTC daily
+ *
+ * @param symbol stock symbol
+ * @param period (quarter) "annual" | "quarter"
+ * @param lastN (1) number of periods to report
+ * @return a dataframe
+ * @export
+ * @examples
+ * cashflowStatement("AAPL",period = "quarter", lastN =4)
+ */
 export const cashFlowStatement = async (
   symbol: string,
   period: string = "quarter",

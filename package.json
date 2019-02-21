@@ -13,13 +13,20 @@
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "typedoc": "typedoc --mode modules -module commonjs --exclude **/*.test.ts --out docs/typedoc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/schardtbc/iexcloud_api_wrapper.git"
   },
-  "keywords": ["IEX","IEXCLOUD","FINANCIAL-DATA","MARKET-DATA","API-WRAPPER"],
+  "keywords": [
+    "IEX",
+    "IEXCLOUD",
+    "FINANCIAL-DATA",
+    "MARKET-DATA",
+    "API-WRAPPER"
+  ],
   "author": "Bruce C. Schardt",
   "license": "MIT",
   "bugs": {
@@ -34,6 +41,7 @@
     "ts-jest": "23.10.5",
     "tslint": "5.12.0",
     "tslint-config-prettier": "1.17.0",
+    "typedoc": "0.14.2",
     "typescript": "3.2.2"
   },
   "files": [
@@ -42,7 +50,9 @@
   ],
   "dependencies": {
     "@types/dotenv": "6.1.0",
+    "@types/eventsource": "1.1.0",
     "axios": "0.18.0",
-    "dotenv": "6.2.0"
+    "dotenv": "6.2.0",
+    "eventsource": "1.0.7"
   }
 }

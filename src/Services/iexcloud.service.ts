@@ -43,7 +43,7 @@ const constructURL = (endpoint: string): string => {
 
 export const iexApiRequest = (endpoint: string): Promise<any> => {
   const iexRestURL = constructURL(endpoint);
-  console.log( iexRestURL );
+  // console.log( iexRestURL );
   const result: Promise<any> = axios
     .get(iexRestURL)
     .then(res => res.data);

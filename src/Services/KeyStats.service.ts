@@ -4,10 +4,14 @@ interface KVP {
   [k: string]: any;
 }
 
-export const keyStats = async (symbol: string): Promise<KeyStats> => {
-  const endpoint = `/stock/${symbol}/stats`;
+export const stats = {
+  
+}
+
+export const keyStats = async (symbol: string, stat?: keyof KeyStats): Promise<KeyStats | keyof KeyStats> => {
+  const endpoint = `/stock/${symbol}/stats${stat ? `/${stat}` : ''}`;
   const data: KVP = await iexApiRequest(endpoint);
-  const result = Object.assign(new KeyStats(), data);
+  const result = stat ? stat : Object.assign(new KeyStats(), data);
   return result;
 };
 

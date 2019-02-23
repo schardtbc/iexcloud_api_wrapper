@@ -1,52 +1,33 @@
 import * as dotenv from "dotenv";
-
-import axios from "axios";
-
 import * as EventSource  from "eventsource"
+import * as request from "superagent";
+const Throttle = require('superagent-throttle');
 
+const throttle = new Throttle({
+  active: true,
+  rate: 100,
+  ratePer: 60000
+});
 
 const baseURL = "https://cloud.iexapis.com/";
 const sandboxURL = "https://sandbox.iexapis.com/";
-
-// const baseSSEURL = "https://cloud.sse.iexapis.com/";
+// const baseSSEURL = "https://cloud-sse.iexapis.com/";
 
 dotenv.config();
 
 const pk = process.env.IEXCLOUD_PUBLIC_KEY;
-
 const apiversion = process.env.IEXCLOUD_API_VERSION;
 
-const aToken = `&token=${pk}`;
-
-const qToken = `?token=${pk}`;
-
-const prefix = () => {
-  if (pk && pk[0]==="T"){
-    return sandboxURL;
-  } else {
-    return baseURL;
-  }
-}
-
-const chooseToken = (str:string) => {
-  if (str.includes("?")) {
-    return aToken
-  } else {
-    return qToken
-  }
-}
-
-const constructURL = (endpoint: string): string => {
-   const result = prefix() + apiversion +  endpoint + chooseToken(endpoint)
-   return result;
-}
+const prefix = () => pk && pk[0]==="T" ? sandboxURL : baseURL
+const chooseToken = (str:string) => `${str.includes("?") ? '&' : '?'}token=${pk}`;
+const constructURL = (endpoint: string): string =>
+  `${prefix()}${apiversion}${endpoint}${chooseToken(endpoint)}`
 
 export const iexApiRequest = (endpoint: string): Promise<any> => {
-  const iexRestURL = constructURL(endpoint);
-  // console.log( iexRestURL );
-  const result: Promise<any> = axios
-    .get(iexRestURL)
-    .then(res => res.data);
+  const result: Promise<any> = request
+    .get(constructURL(endpoint))
+    .use(throttle.plugin())
+    .then(res => JSON.parse(res.text));
   return result;
 };
 
@@ -64,5 +45,4 @@ export const iexApiRequest = (endpoint: string): Promise<any> => {
 //     source.onopen = onOpen
 //     source.onerror = onError
 //     return source
-
 // }

@@ -61,12 +61,8 @@ export const history = async (
   }
   const data: KVP[] = await iexApiRequest(endpoint);
   const result = data.map((o: KVP) => {
-    let r;
-    if (!intraday) {  
-        r = Object.assign(new EndOfDay(), o);
-    } else {
-        r = Object.assign(new Intraday(), o);
-    }
+    let r = !intraday ? Object.assign(new EndOfDay(), o) 
+      : Object.assign(new Intraday(), o);
     r.symbol = symbol;
     return r;
   });

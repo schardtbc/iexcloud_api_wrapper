@@ -144,6 +144,8 @@ export declare const incomeStatement: (symbol: string, period?: string, lastN: n
 
 export declare const intraday: (symbol: string, chartLastN?: number, chartInterval?: number, changeFromClose?: boolean, chartReset?: boolean, chartSimplify?: boolean) => Promise<Intraday[]>;
 
+export declare const intradayForDate: (symbol: string, date:string, chartLastN?: number, chartInterval?: number, changeFromClose?: boolean, chartReset?: boolean, chartSimplify?: boolean) => Promise<IntradayIEXOnly[]>;
+
 export declare const intradayIEXOnly: (symbol: string, chartLastN?: number, chartInterval?: number, changeFromClose?: boolean, chartReset?: boolean, chartSimplify?: boolean) => Promise<IntradayIEXOnly[]>;
 
 export declare const keyStats: (symbol: string) => Promise<KeyStats>;

@@ -12,21 +12,18 @@ export const intraday = async (
   chartReset: boolean = false,
   chartSimplify: boolean = false
 ): Promise<Intraday[]> => {
-  let endpoint = `/stock/${symbol}/chart/1d`;
+  let endpoint = `/stock/${symbol}/chart/1d?chartInterval=${chartInterval}`;
   if (chartLastN > 0) {
-    endpoint = endpoint + `?chartLast=${chartLastN}`;
-  }
-  if (chartInterval > 1) {
-    endpoint = endpoint + `?chartInterval=${chartInterval}`;
+    endpoint = endpoint + `&chartLast=${chartLastN}`;
   }
   if (changeFromClose) {
-    endpoint = endpoint + `?changeFromClose=true`;
+    endpoint = endpoint + `&changeFromClose=true`;
   }
   if (chartReset) {
-    endpoint = endpoint + `?chartReset=true`;
+    endpoint = endpoint + `&chartReset=true`;
   }
   if (chartSimplify) {
-    endpoint = endpoint + `?chartSimplify=true`;
+    endpoint = endpoint + `&chartSimplify=true`;
   }
   const data: KVP[] = await iexApiRequest(endpoint);
   const result = data.map((o: KVP) => {

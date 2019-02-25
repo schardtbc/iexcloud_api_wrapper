@@ -93,6 +93,11 @@ test("intradayIEXOnly", async () => {
     expect.arrayContaining([expect.any(iex.IntradayIEXOnly)])
   );
 });
+test("intradayForDate", async () => {
+  expect(await iex.intradayForDate("AAPL","20190222")).toEqual(
+    expect.arrayContaining([expect.any(iex.IntradayIEXOnly)])
+  );
+});
 test("keyStats", async () => {
   expect(await iex.keyStats("AAPL")).toBeInstanceOf(iex.KeyStats);
 });
@@ -157,11 +162,11 @@ test("splits", async () => {
     expect.arrayContaining([expect.any(iex.Splits)])
   );
 });
-// test("tops", async () => {
-//   expect(await iex.tops("AAPL")).toEqual(
-//     expect.arrayContaining([expect.any(iex.TOPS)])
-//   );
-// });
+test("tops", async () => {
+  expect(await iex.tops("AAPL")).toEqual(
+    expect.arrayContaining([expect.any(iex.TOPS)])
+  );
+});
 test("topsLast", async () => {
   expect(await iex.topsLast("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.TOPSLast)])

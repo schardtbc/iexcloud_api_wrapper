@@ -4,17 +4,16 @@ interface KVP {
   [k: string]: any;
 }
 
-import {IntradayIEXOnly} from "./IntradayForDate.service"
-
-export const intradayIEXOnly = async (
+export const intradayForDate = async (
   symbol: string,
+  date: string,
   chartLastN: number = 0,
   chartInterval: number = 1,
   changeFromClose: boolean = true,
   chartReset: boolean = false,
   chartSimplify: boolean = false
 ): Promise<IntradayIEXOnly[]> => {
-  let endpoint = `/stock/${symbol}/chart/1d/chartIEXOnly=true`;
+  let endpoint = `/stock/${symbol}/chart/date/${date}?chartIEXOnly=true`;
   if (chartLastN > 0) {
     endpoint = endpoint + `&chartLast=${chartLastN}`;
   }
@@ -39,4 +38,32 @@ export const intradayIEXOnly = async (
   return result;
 };
 
+export interface IEXIntradayIEXOnly {
+  date: string;
+  minute: string;
+  label: string;
+  high: number;
+  low: number;
+  average: number;
+  volume: number;
+  notional: number;
+  numberOfTrades: number;
+  open: number;
+  close: number;
+  changeOverTime: number;
+}
 
+export class IntradayIEXOnly implements IEXIntradayIEXOnly {
+  public date: string = "";
+  public minute: string = "";
+  public label: string = "";
+  public high: number = 0;
+  public low: number = 0;
+  public average: number = 0;
+  public volume: number = 0;
+  public notional: number = 0;
+  public numberOfTrades: number = 0;
+  public open: number = 0;
+  public close: number = 0;
+  public changeOverTime: number = 0;
+}

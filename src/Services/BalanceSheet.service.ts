@@ -16,9 +16,8 @@ interface KVP {
  */
 export const balanceSheet = async (
   symbol: string,
-  period: string = "quarter",
-  lastN: number =1
-
+  lastN: number = 1,
+  period: string = "quarter"
 ): Promise<BalanceSheet[]> => {
   const endpoint = `/stock/${symbol}/balance-sheet/${lastN}?period=${period}`;
   const data: KVP = await iexApiRequest(endpoint);

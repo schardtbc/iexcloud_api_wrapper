@@ -6,8 +6,8 @@ interface KVP {
 
 export const incomeStatement = async (
   symbol: string,
-  period: string = "quarter",
-  lastN: number = 1
+  lastN: number = 1,
+  period: string = "quarter"
 ): Promise<IncomeStatement[]> => {
   const endpoint = `/stock/${symbol}/income/${lastN}?period=${period}`;
   const data: KVP = await iexApiRequest(endpoint);

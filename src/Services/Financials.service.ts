@@ -4,11 +4,22 @@ interface KVP {
   [k: string]: any;
 }
 
+/**
+ * Pulls income statement, balance sheet, and cash flow data from the most recent reported quarter.
+ *
+ * - Data Weigthing: 5000 per symbol per period
+ *
+ * @param symbol - a market symbol
+ * @param period - "annual" | "quarter"
+ * @returns array of records
+ *
+ */
 export const financials = async (
   symbol: string,
-  lastn: number = 1
+  lastn: number = 1,
+  period: string = "annual"
 ): Promise<Financials[]> => {
-  const endpoint = `/stock/${symbol}/financials/${lastn}/`;
+  const endpoint = `/stock/${symbol}/financials?period=${period}/${lastn}/`;
   const data: KVP = await iexApiRequest(endpoint);
   const tmp: KVP[] = data.financials;
   const result = tmp.map((o: KVP) => {

@@ -4,9 +4,7 @@ interface KVP {
   [k: string]: any;
 }
 
-export const stats = {
-  
-}
+
 
 export const keyStats = async (symbol: string, stat?: keyof KeyStats): Promise<KeyStats> => {
   const endpoint = `/stock/${symbol}/stats${stat ? `/${stat}` : ''}`;

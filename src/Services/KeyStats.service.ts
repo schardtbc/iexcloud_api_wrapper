@@ -8,11 +8,18 @@ export const stats = {
   
 }
 
-export const keyStats = async (symbol: string, stat?: keyof KeyStats): Promise<KeyStats | keyof KeyStats> => {
+export const keyStats = async (symbol: string, stat?: keyof KeyStats): Promise<KeyStats> => {
   const endpoint = `/stock/${symbol}/stats${stat ? `/${stat}` : ''}`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const result = stat ? stat : Object.assign(new KeyStats(), data);
-  return result;
+  const res = await iexApiRequest(endpoint);
+  var data: KVP;
+  if (stat) {
+    data = {};
+    data[stat] = res;
+    data[symbol] = symbol;
+  } else {
+    data = res;
+  }
+  return Object.assign(new KeyStats(), data);
 };
 
 export interface IEXKeyStats {

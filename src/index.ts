@@ -1,6 +1,7 @@
 export * from "./Services/BalanceSheet.service";
 export * from "./Services/Book.service"
 export * from "./Services/CashFlowStatement.service";
+export * from "./Services/CeoCompensation.service";
 export * from "./Services/Collection.service"
 export * from "./Services/Company.service";
 export * from "./Services/CryptoQuote.service";

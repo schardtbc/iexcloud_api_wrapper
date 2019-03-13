@@ -21,7 +21,9 @@ export interface IEXCompany {
   description: string;
   issueType: string;
   sector: string;
+  securityName: string | null
   tags: string[];
+  employees: number | null
 }
 
 export class Company {
@@ -33,5 +35,7 @@ export class Company {
   public description: string = "";
   public issueType: string = "";
   public sector: string = "";
+  public securityName: string = "";
   public tags: string[] = [];
+  public employees: number = 0;
 }

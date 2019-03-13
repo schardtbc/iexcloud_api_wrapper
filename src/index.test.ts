@@ -21,6 +21,9 @@ test("auction", async () => {
 test("book", async () => {
   expect(await iex.book("AAPL")).toBeInstanceOf(iex.Book);
 });
+test("ceoCompensation", async () => {
+  expect(await iex.ceoCompensation("AAPL")).toBeInstanceOf(iex.CeoCompensation);
+});
 test("company", async () => {
   expect(await iex.company("AAPL")).toBeInstanceOf(iex.Company);
 });

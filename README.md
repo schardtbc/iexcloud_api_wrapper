@@ -106,10 +106,12 @@ Each endpoint is assigned a cost in terms of message units.
 |------|--------------------------------:|:------------|
 | Free | 500,000 | Free
 | Launch | 5,000,000 | $9 |
+| Grow | 100,000,000 | $59($49 paid annually) |
 | Scale | 1,000,000,000 | $ 499 |
 
 see https://iexcloud.io/pricing/ for current plans, rates
 
+Save 40% on Grow plan pricing until end of beta period(when?). $29/month paid annually or $39/mo paid monthly.
 
 ## Api reference documentation
 

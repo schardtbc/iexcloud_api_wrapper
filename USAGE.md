@@ -103,6 +103,8 @@ export declare const book: (symbol: string) => Promise<Book>;
 
 export declare const cashFlowStatement: (symbol: string, period?: string, lastN: number =1) => Promise<CashFlowStatement[]>;
 
+export declare const ceoCompensation: (symbol: string) => Promise<CeoCompensation>;
+
 export declare type CollectionType = "sector" | "tag" | "list";
 
 export declare const collection: (collectionType: CollectionType, collectionName: string) => Promise<Quote[]>;

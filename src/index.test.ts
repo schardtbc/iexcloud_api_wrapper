@@ -41,11 +41,11 @@ test("officialPrice", async () => {
 test("delayedQuote", async () => {
   expect(await iex.delayedQuote("AAPL")).toBeInstanceOf(iex.DelayedQuote);
 });
-test("dividends", async () => {
-  expect(await iex.dividends("AAPL")).toEqual(
-    expect.arrayContaining([expect.any(iex.Dividends)])
-  );
-});
+// test("dividends", async () => {
+//   expect(await iex.dividends("AAPL")).toEqual(
+//     expect.arrayContaining([expect.any(iex.Dividends)])
+//   );
+// });
 test("earnings", async () => {
   expect(await iex.earnings("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.Earnings)])
@@ -160,11 +160,11 @@ test("socialSentiment daily", async () => {
 test("socialSentiment minute", async () => {
   expect(await iex.socialSentiment("AAPL", "daily", "20190213")).toBeInstanceOf(iex.SocialSentiment);
 });
-test("splits", async () => {
-  expect(await iex.splits("CNC")).toEqual(
-    expect.arrayContaining([expect.any(iex.Splits)])
-  );
-});
+// test("splits", async () => {
+//   expect(await iex.splits("CNC")).toEqual(
+//     expect.arrayContaining([expect.any(iex.Splits)])
+//   );
+// });
 test("tops", async () => {
   expect(await iex.tops("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.TOPS)])

@@ -17,6 +17,7 @@ export * from "./Services/EndOfDay.service";
 export * from "./Services/EndOfDayCloseOnly.service";
 export * from "./Services/Estimates.service";
 export * from "./Services/Financials.service";
+export * from "./Services/History.service";
 export * from "./Services/IEXSymbol.service";
 export * from "./Services/IncomeStatement.service";
 export * from "./Services/Intraday.service";

@@ -12,35 +12,46 @@ type timePeriod = "1d" | "1m" | "3m" | "6m" | "ytd" | "1y" | "2y" | "5y";
 
 export const history = async (
   symbol: string,
-  {changeFromClose,
-   closeOnly,
-   date,
-   iexOnly,
-   lastN,
-   interval,
-   period,
-   reset,
-   simplify}  =  
-  {changeFromClose: true,
-   closeOnly: false,
-   date: "",
-   iexOnly: false,
-   interval: 1,
-   lastN: 0,
-   period: "1m",
-   reset: false,
-   simplify: false}
+  {changeFromClose= true,
+   closeOnly=  false,
+   chartByDay=false,
+   date = "",
+   iexOnly = false,
+   lastN = 0,
+   interval = 1,
+   period = "1m",
+   reset = false,
+   simplify = false}: 
+  {changeFromClose?:boolean,
+   closeOnly?:boolean ,
+   chartByDay?: boolean,
+   date?: string,
+   iexOnly?: boolean,
+   interval?: number,
+   lastN?: number,
+   period?: string,
+   reset?: boolean,
+   simplify?: boolean} = {}
 ): Promise<Array<(EndOfDay | Intraday)>> => {
   let intraday = false;
+  let endpoint;
   if (date.length >0){
       date = date.replace(/-/g,"");
-      period = 'date/{date}'
+      if (chartByDay){
+        period = `date/${date}?chartByDay=true`
+      } else{
+      period = `date/${date}?chartByDay=false`
       intraday = true;
+      }
   }
   if (period === '1d'){
       intraday = true;
   }
-  let endpoint = `/stock/${symbol}/chart/${period}?chartCloseOnly={closeOnly}`;
+  if (date.length>0) {
+     endpoint = `/stock/${symbol}/chart/${period}&chartCloseOnly=${closeOnly}`;
+  } else {
+      endpoint = `/stock/${symbol}/chart/${period}?chartCloseOnly=${closeOnly}`;
+  }
   if (iexOnly){
       endpoint = endpoint+"&chartIEXOnly=true";
   }

@@ -1,5 +1,6 @@
 import * as iex from "./index";
 
+
 test("balanceSheet", async () => {
   expect(await iex.balanceSheet("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.BalanceSheet)])
@@ -76,6 +77,34 @@ test("financials", async () => {
     expect.arrayContaining([expect.any(iex.Financials)])
   );
 });
+test("history EndOfDay", async () => {
+  const eod = await iex.history("AAPL");
+  // console.log(eod.slice(0,2))  
+  expect(eod).toEqual(
+    expect.arrayContaining([expect.any(iex.EndOfDay)])
+  )
+});
+test("history Intraday", async () => {
+  const intraday = await iex.history("AAPL",{period: "1d"})
+  // console.log(intraday.slice(0,2))
+  expect(intraday).toEqual(
+    expect.arrayContaining([expect.any(iex.Intraday)])
+  )
+});
+test("history Intraday for date ", async () => {
+  const intraday = await iex.history("AAPL",{date: "2019-03-12"})
+  // console.log(intraday.slice(0,2))
+  expect(intraday).toEqual(
+    expect.arrayContaining([expect.any(iex.Intraday)])
+  )
+});
+test("history EndOfDay for date ", async () => {
+  const intraday = await iex.history("AAPL",{chartByDay:true,date: "2019-03-14"})
+  // console.log(intraday.slice(0,2))
+  expect(intraday).toEqual(
+    expect.arrayContaining([expect.any(iex.EndOfDay)])
+  )
+});
 test("iexSymbols", async () => {
   expect(await iex.iexSymbols()).toEqual(
     expect.arrayContaining([expect.any(iex.IEXSymbol)])
@@ -104,11 +133,11 @@ test("intradayForDate", async () => {
 test("keyStats", async () => {
   expect(await iex.keyStats("AAPL")).toBeInstanceOf(iex.KeyStats);
 });
-test("list", async () => {
-  expect(await iex.list("gainers")).toEqual(
-    expect.arrayContaining([expect.any(iex.Quote)])
-  );
-});
+// test("list", async () => {
+//   expect(await iex.list("gainers")).toEqual(
+//     expect.arrayContaining([expect.any(iex.Quote)])
+//   );
+// });
 test("logo", async () => {
   expect(await iex.logoURL("AAPL")).toBeInstanceOf(iex.Logo);
 });
@@ -165,11 +194,11 @@ test("socialSentiment minute", async () => {
 //     expect.arrayContaining([expect.any(iex.Splits)])
 //   );
 // });
-test("tops", async () => {
-  expect(await iex.tops("AAPL")).toEqual(
-    expect.arrayContaining([expect.any(iex.TOPS)])
-  );
-});
+// test("tops", async () => {
+//   expect(await iex.tops("AAPL")).toEqual(
+//     expect.arrayContaining([expect.any(iex.TOPS)])
+//   );
+// });
 test("topsLast", async () => {
   expect(await iex.topsLast("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.TOPSLast)])

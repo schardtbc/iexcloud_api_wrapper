@@ -1,5 +1,6 @@
 import * as iex from "./index";
 
+
 test("balanceSheet", async () => {
   expect(await iex.balanceSheet("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.BalanceSheet)])
@@ -21,6 +22,9 @@ test("auction", async () => {
 test("book", async () => {
   expect(await iex.book("AAPL")).toBeInstanceOf(iex.Book);
 });
+test("ceoCompensation", async () => {
+  expect(await iex.ceoCompensation("AAPL")).toBeInstanceOf(iex.CeoCompensation);
+});
 test("company", async () => {
   expect(await iex.company("AAPL")).toBeInstanceOf(iex.Company);
 });
@@ -38,11 +42,11 @@ test("officialPrice", async () => {
 test("delayedQuote", async () => {
   expect(await iex.delayedQuote("AAPL")).toBeInstanceOf(iex.DelayedQuote);
 });
-test("dividends", async () => {
-  expect(await iex.dividends("AAPL")).toEqual(
-    expect.arrayContaining([expect.any(iex.Dividends)])
-  );
-});
+// test("dividends", async () => {
+//   expect(await iex.dividends("AAPL")).toEqual(
+//     expect.arrayContaining([expect.any(iex.Dividends)])
+//   );
+// });
 test("earnings", async () => {
   expect(await iex.earnings("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.Earnings)])
@@ -73,6 +77,34 @@ test("financials", async () => {
     expect.arrayContaining([expect.any(iex.Financials)])
   );
 });
+test("history EndOfDay", async () => {
+  const eod = await iex.history("AAPL");
+  // console.log(eod.slice(0,2))  
+  expect(eod).toEqual(
+    expect.arrayContaining([expect.any(iex.EndOfDay)])
+  )
+});
+test("history Intraday", async () => {
+  const intraday = await iex.history("AAPL",{period: "1d"})
+  // console.log(intraday.slice(0,2))
+  expect(intraday).toEqual(
+    expect.arrayContaining([expect.any(iex.Intraday)])
+  )
+});
+test("history Intraday for date ", async () => {
+  const intraday = await iex.history("AAPL",{date: "2019-03-12"})
+  // console.log(intraday.slice(0,2))
+  expect(intraday).toEqual(
+    expect.arrayContaining([expect.any(iex.Intraday)])
+  )
+});
+test("history EndOfDay for date ", async () => {
+  const intraday = await iex.history("AAPL",{chartByDay:true,date: "2019-03-14"})
+  // console.log(intraday.slice(0,2))
+  expect(intraday).toEqual(
+    expect.arrayContaining([expect.any(iex.EndOfDay)])
+  )
+});
 test("iexSymbols", async () => {
   expect(await iex.iexSymbols()).toEqual(
     expect.arrayContaining([expect.any(iex.IEXSymbol)])
@@ -93,14 +125,19 @@ test("intradayIEXOnly", async () => {
     expect.arrayContaining([expect.any(iex.IntradayIEXOnly)])
   );
 });
+test("intradayForDate", async () => {
+  expect(await iex.intradayForDate("AAPL","20190222")).toEqual(
+    expect.arrayContaining([expect.any(iex.IntradayIEXOnly)])
+  );
+});
 test("keyStats", async () => {
   expect(await iex.keyStats("AAPL")).toBeInstanceOf(iex.KeyStats);
 });
-test("list", async () => {
-  expect(await iex.list("gainers")).toEqual(
-    expect.arrayContaining([expect.any(iex.Quote)])
-  );
-});
+// test("list", async () => {
+//   expect(await iex.list("gainers")).toEqual(
+//     expect.arrayContaining([expect.any(iex.Quote)])
+//   );
+// });
 test("logo", async () => {
   expect(await iex.logoURL("AAPL")).toBeInstanceOf(iex.Logo);
 });
@@ -152,11 +189,11 @@ test("socialSentiment daily", async () => {
 test("socialSentiment minute", async () => {
   expect(await iex.socialSentiment("AAPL", "daily", "20190213")).toBeInstanceOf(iex.SocialSentiment);
 });
-test("splits", async () => {
-  expect(await iex.splits("CNC")).toEqual(
-    expect.arrayContaining([expect.any(iex.Splits)])
-  );
-});
+// test("splits", async () => {
+//   expect(await iex.splits("CNC")).toEqual(
+//     expect.arrayContaining([expect.any(iex.Splits)])
+//   );
+// });
 // test("tops", async () => {
 //   expect(await iex.tops("AAPL")).toEqual(
 //     expect.arrayContaining([expect.any(iex.TOPS)])

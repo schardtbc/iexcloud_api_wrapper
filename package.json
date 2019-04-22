@@ -1,6 +1,6 @@
 {
   "name": "iexcloud_api_wrapper",
-  "version": "1.1.0",
+  "version": "1.1.3",
   "description": "IEX Investors Exchange, IEXCLOUD API Wrapper, Financial Data,TypeScript",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",

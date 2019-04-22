@@ -36,7 +36,7 @@
   "devDependencies": {
     "@types/jest": "23.3.11",
     "jest": "^24.1.0",
-    "nyc": "^13.3.0",
+    "nyc": "^14.0.0",
     "prettier": "1.15.3",
     "ts-jest": "23.10.5",
     "tslint": "5.12.0",
@@ -52,7 +52,6 @@
     "@types/dotenv": "6.1.0",
     "@types/eventsource": "1.1.0",
     "@types/superagent": "^3.8.6",
-    "axios": "0.18.0",
     "dotenv": "6.2.0",
     "eventsource": "1.0.7",
     "superagent": "^4.1.0",

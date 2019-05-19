@@ -20,9 +20,10 @@ export const earnings = async (
 };
 
 export interface IEXEarnings {
+  symbol: string;
   actualEPS: number;
   consensusEPS: number;
-  announceTime: number;
+  announceTime: string;
   numberOfEstimates: number;
   EPSSurpriseDollar: number;
   EPSReportDate: string;
@@ -33,9 +34,10 @@ export interface IEXEarnings {
 }
 
 export class Earnings implements IEXEarnings {
+  public symbol: string="";
   public actualEPS: number = 0;
   public consensusEPS: number = 0;
-  public announceTime: number = 0;
+  public announceTime: string = "";
   public numberOfEstimates: number = 0;
   public EPSSurpriseDollar: number = 0;
   public EPSReportDate: string = "";

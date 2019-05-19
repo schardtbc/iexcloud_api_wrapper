@@ -1,11 +1,15 @@
+/**
+ * @jest-environment node
+ */
+
+
 import * as iex from "./index";
 
 
-test("balanceSheet", async () => {
-  expect(await iex.balanceSheet("AAPL")).toEqual(
-    expect.arrayContaining([expect.any(iex.BalanceSheet)])
-  );
+test("advancedStats", async () => {
+  expect(await iex.advancedStats("AAPL")).toBeInstanceOf(iex.AdvancedStats)
 });
+
 test("cashFlowStatement", async () => {
   expect(await iex.cashFlowStatement("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.CashFlowStatement)])
@@ -50,6 +54,11 @@ test("delayedQuote", async () => {
 test("earnings", async () => {
   expect(await iex.earnings("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.Earnings)])
+  );
+});
+test("earningsToday", async () => {
+  expect(await iex.earningsToday("AAPL")).toEqual(
+    expect.arrayContaining([expect.any(iex.EarningsToday)])
   );
 });
 // test("effectiveSpread", async () => {

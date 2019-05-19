@@ -1,3 +1,4 @@
+export * from "./Services/AdvancedStats.service";
 export * from "./Services/BalanceSheet.service";
 export * from "./Services/Book.service"
 export * from "./Services/CashFlowStatement.service";
@@ -12,6 +13,7 @@ export * from "./Services/DEEPTrades.service";
 export * from "./Services/DelayedQuote.service";
 export * from "./Services/Dividends.service";
 export * from "./Services/Earnings.service";
+export * from "./Services/EarningsToday.service";
 export * from "./Services/EffectiveSpread.service";
 export * from "./Services/EndOfDay.service";
 export * from "./Services/EndOfDayCloseOnly.service";

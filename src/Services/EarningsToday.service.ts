@@ -9,10 +9,10 @@ export const earningsToday = async (
 ): Promise<EarningsToday[]> => {
   const endpoint = `/stock/${symbol}/today-earnings/`;
   const data: KVP = await iexApiRequest(endpoint);
-  console.log(data)
+  // console.log(data)
   const bto: KVP[] = data.bto;
   const amc: KVP[] = data.amc;
-  const dmt: KVP[] =data.dmt;
+  const other: KVP[] =data.other;
 
   const result = bto.map((o: KVP) => {
     const r = Object.assign(new EarningsToday(), o);

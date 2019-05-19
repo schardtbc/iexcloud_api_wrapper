@@ -20,6 +20,7 @@ export const financials = async (
 };
 
 export interface IEXFinancials {
+  symbol: string;
   reportDate: string;
   grossProfit: number;
   costOfRevenue: number;
@@ -43,6 +44,7 @@ export interface IEXFinancials {
 }
 
 export class Financials implements IEXFinancials {
+  public symbol: string = "";
   public reportDate: string = "";
   public grossProfit: number = 0;
   public costOfRevenue: number = 0;

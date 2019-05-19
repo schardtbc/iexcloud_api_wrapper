@@ -97,6 +97,8 @@ export declare const accountUsage: (type: UsageType) => Promise<any>;
 
 ```javascript
 
+export declare const advancedStats: (symbol: string) => Promise<AdvancedStats>;
+
 export declare const balanceSheet: (symbol: string, period?: string, lastN: number =1) => Promise<BalanceSheet[]>;
 
 export declare const book: (symbol: string) => Promise<Book>;
@@ -120,6 +122,8 @@ export declare type timePeriod = "next" | "1m" | "3m" | "6m" | "ytd" | "1y" | "2
 export declare const dividends: (symbol: string, range?: timePeriod) => Promise<Dividends[]>;
 
 export declare const earnings: (symbol: string, lastn?: number) => Promise<Earnings[]>;
+
+export declare const earningsToday: (symbol: string) => Promise<EarningsToday[]>;
 
 export declare const effectiveSpread: (symbol: string) => Promise<EffectiveSpread[]>;
 

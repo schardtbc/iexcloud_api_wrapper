@@ -14,7 +14,7 @@ export const intradayIEXOnly = async (
   chartReset: boolean = false,
   chartSimplify: boolean = false
 ): Promise<IntradayIEXOnly[]> => {
-  let endpoint = `/stock/${symbol}/chart/1d/chartIEXOnly=true`;
+  let endpoint = `/stock/${symbol}/chart/1d?chartIEXOnly=true`;
   if (chartLastN > 0) {
     endpoint = endpoint + `&chartLast=${chartLastN}`;
   }

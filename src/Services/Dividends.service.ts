@@ -29,6 +29,9 @@ export interface IEXDividends {
   declaredDate: string;
   amount: number;
   flag: string;
+  currency: string;
+  description: string;
+  frequency: string;
 }
 
 export class Dividends implements IEXDividends {
@@ -39,4 +42,7 @@ export class Dividends implements IEXDividends {
   public declaredDate: string = "";
   public amount: number = 0;
   public flag: string = "";
+  public currency: string = "";
+  public description: string = "";
+  public frequency: string = "";
 }

@@ -21,6 +21,7 @@ export const incomeStatement = async (
 };
 
 export interface IEXIncomeStatement {
+  symbol: string;
   reportDate: string;
   totalRevenue: number;
   costOfRevenue: number;
@@ -40,6 +41,7 @@ export interface IEXIncomeStatement {
 }
 
 export class IncomeStatement {
+  public symbol: string ="";
   public reportDate: string = "";
   public totalRevenue: number = 0;
   public costOfRevenue: number = 0;

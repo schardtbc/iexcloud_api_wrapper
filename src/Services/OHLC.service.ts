@@ -11,9 +11,10 @@ export const ohlc = async (symbol: string): Promise<OHLC> => {
   result.open = data.open.price;
   result.close = data.close.price;
   result.high = data.high;
-  result.close = data.close;
-  result.openTime = data.openTime;
-  result.closeTime = data.closeTime;
+  result.low = data.low;
+  result.openTime = data.open.time;
+  result.closeTime = data.close.time;
+  result.symbol = symbol
   return result;
 };
 

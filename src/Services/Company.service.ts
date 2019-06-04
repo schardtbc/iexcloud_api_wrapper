@@ -15,6 +15,7 @@ export const company = async (symbol: string): Promise<Company> => {
 export interface IEXCompany {
   symbol: string;
   companyName: string;
+  CEO: string;
   exchange: string;
   industry: string;
   website: string;
@@ -29,6 +30,7 @@ export interface IEXCompany {
 export class Company {
   public symbol: string = "";
   public companyName: string = "";
+  public CEO: string="";
   public exchange: string = "";
   public industry: string = "";
   public website: string = "";

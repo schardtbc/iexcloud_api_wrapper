@@ -35,6 +35,7 @@ export const cashFlowStatement = async (
 };
 
 export interface IEXCashFlow {
+  symbol: string;
   reportDate: string;
   netIncome: number;
   depreciation: number;
@@ -54,6 +55,7 @@ export interface IEXCashFlow {
 }
 
 export class CashFlowStatement implements IEXCashFlow {
+  public symbol:string = "";
   public reportDate: string = "";
   public netIncome: number = 0;
   public depreciation: number = 0;

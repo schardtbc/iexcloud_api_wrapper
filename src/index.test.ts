@@ -188,6 +188,13 @@ test("price", async () => {
 test("priceTarget", async () => {
   expect(await iex.priceTarget("AAPL")).toBeInstanceOf(iex.PriceTarget);
 });
+
+test("recommendationTrends", async () => {
+  expect(await iex.recommendationTrends("AAPL")).toEqual(
+    expect.arrayContaining([expect.any(iex.Recommendation)])
+)
+  });
+
 test("quote", async () => {
   expect(await iex.quote("AAPL")).toBeInstanceOf(iex.Quote);
 });

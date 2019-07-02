@@ -37,6 +37,7 @@ export * from "./Services/PreviousDay.service";
 export * from "./Services/Price.service";
 export * from "./Services/PriceTarget.service";
 export * from "./Services/Quote.service";
+export * from "./Services/RecommendationTrends.service"
 export * from "./Services/SectorPerformance.service";
 export * from "./Services/SocialSentiment.service";
 export * from "./Services/Splits.service";

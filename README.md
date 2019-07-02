@@ -26,7 +26,7 @@ npm i iexcloud_api_wrapper
 then in your .env file add the following keys
 
 ```
-IEXCLOUD_API_VERSION = "beta"
+IEXCLOUD_API_VERSION = "stable"
 IEXCLOUD_PUBLIC_KEY = "pk_..."
 IEXCLOUD_SECRET_KEY = "sk_..."
 
@@ -166,7 +166,8 @@ Below is a list of the iexcloud APIs that have ([x]) and have not ([ ]) been imp
 | [x] | Peers | 500 | per symbol
 | [x] | Previous Day Prices | 2 per symbol
 | [x] | Price | 1 | per symbol per call
-| [x] | Price Target | 500 per symbol
+| [x] | Price Target | 500 | per symbol
+| [x] | Recommendation Trends | 1000 | per symbol
 | [x] | Quote | 1 | per quote 
 | [x] | Sector Performance | 1 | per sector
 | [x] | Social Sentiment, daily | 100 | per date

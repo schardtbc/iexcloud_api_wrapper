@@ -13,6 +13,7 @@ export const intradayForDate = async (
   chartReset: boolean = false,
   chartSimplify: boolean = false
 ): Promise<IntradayIEXOnly[]> => {
+  date = date.replace(/-/g,"");
   let endpoint = `/stock/${symbol}/chart/date/${date}?chartIEXOnly=true`;
   if (chartLastN > 0) {
     endpoint = endpoint + `&chartLast=${chartLastN}`;

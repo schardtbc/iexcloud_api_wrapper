@@ -105,14 +105,14 @@ test("history Intraday", async () => {
   )
 });
 test("history Intraday for date ", async () => {
-  const intraday = await iex.history("AAPL",{date: "2019-05-17"})
+  const intraday = await iex.history("AAPL",{date: "2019-07-08"})
   // console.log(intraday.slice(0,2))
   expect(intraday).toEqual(
     expect.arrayContaining([expect.any(iex.Intraday)])
   )
 });
 test("history EndOfDay for date ", async () => {
-  const intraday = await iex.history("AAPL",{chartByDay:true,date: "2019-05-17"})
+  const intraday = await iex.history("AAPL",{chartByDay:true,date: "2019-07-08"})
   // console.log(intraday.slice(0,2))
   expect(intraday).toEqual(
     expect.arrayContaining([expect.any(iex.EndOfDay)])
@@ -139,7 +139,7 @@ test("intradayIEXOnly", async () => {
   );
 });
 test("intradayForDate", async () => {
-  expect(await iex.intradayForDate("AAPL","20190517")).toEqual(
+  expect(await iex.intradayForDate("AAPL","2019-07-02")).toEqual(
     expect.arrayContaining([expect.any(iex.IntradayIEXOnly)])
   );
 });

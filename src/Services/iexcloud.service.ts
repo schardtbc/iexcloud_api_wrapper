@@ -4,6 +4,12 @@ import axios from "axios";
 
 import * as EventSource  from "eventsource"
 
+interface Url {
+  hostName: string;
+  schema: string;
+  path: string;
+  query: any
+}
 
 const baseURL = "https://cloud.iexapis.com/";
 const sandboxURL = "https://sandbox.iexapis.com/";
@@ -41,9 +47,19 @@ const constructURL = (endpoint: string): string => {
    return result;
 }
 
+// const constructURL = (endpoint: string | object): string => {
+//   let result: string
+//   if (typeof endpoint === "string") {
+//     result = prefix() + apiversion +  endpoint + chooseToken(endpoint)
+//   } else if ( typeof endpoint === "object" ) {
+    
+//   }
+
+//   return result;
+// }
+
 export const iexApiRequest = (endpoint: string): Promise<any> => {
   const iexRestURL = constructURL(endpoint);
-  // console.log( iexRestURL );
   const result: Promise<any> = axios
     .get(iexRestURL)
     .then(res => res.data);

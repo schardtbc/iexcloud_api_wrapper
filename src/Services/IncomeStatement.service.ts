@@ -9,7 +9,7 @@ export const incomeStatement = async (
   period: string = "quarter",
   lastN: number = 1
 ): Promise<IncomeStatement[]> => {
-  const endpoint = `/stock/${symbol}/income/${lastN}?period=${period}`;
+  const endpoint = `/stock/${symbol}/income?period=${period}&last=${lastN}`;
   const data: KVP = await iexApiRequest(endpoint);
   // console.log(data);
   const result: any[] = data.income;

@@ -12,7 +12,7 @@ type UsageType =
   | "alert-records";
 
 export const accountUsage = async (type: UsageType): Promise<any> => {
-  const endpoint = `/account/metadata/${type}`;
+  const endpoint = `/account/usage/${type}`;
   const data: KVP = await iexApiRequest(endpoint);
   return data;
 };

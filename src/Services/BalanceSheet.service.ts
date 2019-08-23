@@ -20,7 +20,7 @@ export const balanceSheet = async (
   lastN: number =1
 
 ): Promise<BalanceSheet[]> => {
-  const endpoint = `/stock/${symbol}/balance-sheet/${lastN}?period=${period}`;
+  const endpoint = `/stock/${symbol}/balance-sheet?period=${period}&last=${lastN}`;
   const data: KVP = await iexApiRequest(endpoint);
   // console.log(data);
   const result: any[] = data.balancesheet;

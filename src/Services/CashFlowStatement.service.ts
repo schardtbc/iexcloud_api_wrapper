@@ -23,7 +23,7 @@ export const cashFlowStatement = async (
   period: string = "quarter",
   lastN: number = 1
 ): Promise<CashFlowStatement[]> => {
-  const endpoint = `/stock/${symbol}/cash-flow?period=${period}?last=${lastN}`;
+  const endpoint = `/stock/${symbol}/cash-flow?period=${period}&last=${lastN}`;
   const data: KVP = await iexApiRequest(endpoint);
   // console.log(data);
   const result: any[] = data.cashflow;

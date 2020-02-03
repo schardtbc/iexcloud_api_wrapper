@@ -41,6 +41,7 @@ export * from "./Services/RecommendationTrends.service"
 export * from "./Services/SectorPerformance.service";
 export * from "./Services/SocialSentiment.service";
 export * from "./Services/Splits.service";
+export * from "./Services/TechnicalIndicators.service"
 export * from "./Services/TOPS.service";
 export * from "./Services/TOPSLast.service";
 export * from "./Services/VolumeByVenue.service";

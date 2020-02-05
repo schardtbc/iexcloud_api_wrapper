@@ -229,3 +229,8 @@ test("volumeByVenue", async () => {
     expect.arrayContaining([expect.any(iex.VolumeByVenue)])
   );
 });
+test("technicalIndicators", async () => {
+  expect(await iex.technicalIndicators("AAPL", "sma")).toEqual(
+    expect.arrayContaining([expect.any(iex.TechnicalIndicator)])
+  );
+});

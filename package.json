@@ -35,13 +35,13 @@
   "homepage": "https://github.com/schardtbc/iexcloud_api_wrapper#readme",
   "devDependencies": {
     "@types/jest": "24.0.15",
-    "jest": "24.8.0",
+    "jest": "^26.0.1",
     "nyc": "14.1.1",
     "prettier": "1.18.2",
-    "ts-jest": "24.0.2",
+    "ts-jest": "^25.5.1",
     "tslint": "5.18.0",
     "tslint-config-prettier": "1.18.0",
-    "typedoc": "0.14.2",
+    "typedoc": "^0.17.6",
     "typescript": "3.5.2"
   },
   "files": [

@@ -1,14 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const sectorPerformance = async (): Promise<SectorPerformance[]> => {
-  const endpoint = "/stock/market/sector-performance";
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map(o => Object.assign(new SectorPerformance(), o));
-  return result;
+  const data: KVP[] = await iexApiRequest("/stock/market/sector-performance");
+
+  return data.map(o => new SectorPerformance(o));
 };
 
 export interface IEXSectorPerformance {
@@ -18,7 +13,7 @@ export interface IEXSectorPerformance {
   lastUpdated: number;
 }
 
-export class SectorPerformance {
+export class SectorPerformance extends DynamicObject {
   public type: string = "";
   public name: string = "";
   public performance: number = 0;

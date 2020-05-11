@@ -1,20 +1,15 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const logoURL = async (symbol: string): Promise<Logo> => {
-  const endpoint = `/stock/${symbol}/logo`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const result = Object.assign(new Logo(), data);
-  return result;
+  const data: KVP = await iexApiRequest(`/stock/${symbol}/logo`);
+
+  return new Logo(data);
 };
 
 export interface IEXLogo {
   url: string;
 }
 
-export class Logo {
+export class Logo extends DynamicObject {
   public url: string = "";
 }

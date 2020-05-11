@@ -2,15 +2,6 @@ import * as dotenv from "dotenv";
 
 import axios from "axios";
 
-import * as EventSource  from "eventsource"
-
-interface Url {
-  hostName: string;
-  schema: string;
-  path: string;
-  query: any
-}
-
 const baseURL = "https://cloud.iexapis.com/";
 const sandboxURL = "https://sandbox.iexapis.com/";
 
@@ -19,66 +10,39 @@ const sandboxURL = "https://sandbox.iexapis.com/";
 dotenv.config();
 
 const pk = process.env.IEXCLOUD_PUBLIC_KEY;
-
 const apiversion = process.env.IEXCLOUD_API_VERSION;
 
-const aToken = `&token=${pk}`;
-
-const qToken = `?token=${pk}`;
-
 const prefix = () => {
-  if (pk && pk[0]==="T"){
-    return sandboxURL;
-  } else {
-    return baseURL;
+  return (pk && pk[0] === "T")
+      ? sandboxURL
+      : baseURL;
+}
+
+export const iexApiRequest = async (endpoint: string, params = {}): Promise<any> => {
+  try {
+    const { data } = await axios.get(`${prefix()}${apiversion}${endpoint}`, {
+      params: {
+        ...params,
+        token: pk
+      }
+    });
+
+    return data;
+  } catch (error) {
+    console.log(error);
   }
-}
-
-const chooseToken = (str:string) => {
-  if (str.includes("?")) {
-    return aToken
-  } else {
-    return qToken
-  }
-}
-
-const constructURL = (endpoint: string): string => {
-   const result = prefix() + apiversion +  endpoint + chooseToken(endpoint)
-   return result;
-}
-
-// const constructURL = (endpoint: string | object): string => {
-//   let result: string
-//   if (typeof endpoint === "string") {
-//     result = prefix() + apiversion +  endpoint + chooseToken(endpoint)
-//   } else if ( typeof endpoint === "object" ) {
-    
-//   }
-
-//   return result;
-// }
-
-export const iexApiRequest = (endpoint: string): Promise<any> => {
-  const iexRestURL = constructURL(endpoint);
-  const result: Promise<any> = axios
-    .get(iexRestURL)
-    .then(res => res.data);
-  return result;
 };
 
-// const defaultHandler = (evt: MessageEvent) => {
-//   console.log(evt.data);
-// }
+export interface KVP {
+  [k: string]: any;
+}
 
-// export const iexsse = (endpoint:string, onOpen: (evt: MessageEvent) => any = defaultHandler,
-//                        onMessage: (evt: MessageEvent) => any = defaultHandler,
-//                        onError: (evt: MessageEvent)=>any = defaultHandler
-//                        ) => {
-//     const sseURL = baseSSEURL + apiversion + endpoint + chooseToken(endpoint);
-//     const source = new EventSource(sseURL)
-//     source.onmessage = onMessage
-//     source.onopen = onOpen
-//     source.onerror = onError
-//     return source
+export class DynamicObject implements KVP{
+  [k: string]: any;
 
-// }
+  constructor (theObject: { [x: string]: any; }) {
+    for (const key of Object.keys(theObject)) {
+      this[key] = theObject[key];
+    }
+  }
+}

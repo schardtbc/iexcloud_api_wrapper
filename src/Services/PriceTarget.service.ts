@@ -1,14 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const priceTarget = async (symbol: string): Promise<PriceTarget> => {
-  const endpoint = `/stock/${symbol}/price-target`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const result = Object.assign(new PriceTarget(), data);
-  return result;
+  const data: KVP = await iexApiRequest(`/stock/${symbol}/price-target`);
+
+  return new PriceTarget(data);
 };
 
 export interface IEXPriceTarget {
@@ -20,7 +15,7 @@ export interface IEXPriceTarget {
   numberOfAnalysts: number;
 }
 
-export class PriceTarget implements IEXPriceTarget {
+export class PriceTarget extends DynamicObject implements IEXPriceTarget {
   public symbol: string = "";
   public updatedDate: string = "";
   public priceTargetAverage: number = 0;

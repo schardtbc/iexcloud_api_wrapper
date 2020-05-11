@@ -16,7 +16,6 @@ export * from "./Services/Earnings.service";
 export * from "./Services/EarningsToday.service";
 export * from "./Services/EffectiveSpread.service";
 export * from "./Services/EndOfDay.service";
-export * from "./Services/EndOfDayCloseOnly.service";
 export * from "./Services/Estimates.service";
 export * from "./Services/Financials.service";
 export * from "./Services/History.service";

@@ -1,11 +1,7 @@
-import { iexApiRequest } from "./iexcloud.service";
+import { iexApiRequest, KVP } from "./iexcloud.service";
+import { IntradayIEXOnly } from "./IntradayForDate.service"
 
-interface KVP {
-  [k: string]: any;
-}
-
-import {IntradayIEXOnly} from "./IntradayForDate.service"
-
+// TODO: Is this needed
 export const intradayIEXOnly = async (
   symbol: string,
   chartLastN: number = 0,
@@ -31,12 +27,11 @@ export const intradayIEXOnly = async (
     endpoint = endpoint + `&chartSimplify=true`;
   }
   const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => {
-    const r = Object.assign(new IntradayIEXOnly(), o);
-    r.symbol = symbol;
-    return r;
-  });
-  return result;
+
+  return data.map((o: KVP) => new IntradayIEXOnly({
+    ...o,
+    symbol
+  }));
 };
 
 

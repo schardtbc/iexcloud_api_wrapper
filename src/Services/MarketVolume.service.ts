@@ -1,14 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const marketVolume = async (): Promise<MarketVolume[]> => {
-  const endpoint = `/market`;
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => Object.assign(new MarketVolume(), o));
-  return result;
+  const data: KVP[] = await iexApiRequest('/market');
+
+  return data.map((o: KVP) => new MarketVolume(o));
 };
 
 export interface IEXMarketVolume {
@@ -23,7 +18,7 @@ export interface IEXMarketVolume {
   lastUpdated: number;
 }
 
-export class MarketVolume {
+export class MarketVolume extends DynamicObject{
   public mic: string = "";
   public tapeId: string = "";
   public venueName: string = "";

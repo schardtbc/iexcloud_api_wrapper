@@ -1,20 +1,14 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const effectiveSpread = async (
   symbol: string
 ): Promise<EffectiveSpread[]> => {
-  const endpoint = `/stock/${symbol}/effective-spread`;
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => {
-    const r = Object.assign(new EffectiveSpread(), o);
-    r.symbol = symbol;
-    return r;
-  });
-  return result;
+  const data: KVP[] = await iexApiRequest(`/stock/${symbol}/effective-spread`);
+
+  return data.map((o: KVP) => new EffectiveSpread({
+    ...o,
+    symbol
+  }));
 };
 
 export interface IEXEffectiveSpread {
@@ -27,7 +21,7 @@ export interface IEXEffectiveSpread {
   priceImprovement: number;
 }
 
-export class EffectiveSpread implements IEXEffectiveSpread {
+export class EffectiveSpread extends DynamicObject implements IEXEffectiveSpread {
   public symbol: string = "";
   public volume: number = 0;
   public venue: string = "";

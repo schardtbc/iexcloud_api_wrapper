@@ -7,27 +7,31 @@ const baseURL = "https://cloud.iexapis.com/";
 dotenv.config();
 
 const sk = process.env.IEXCLOUD_SECRET_KEY;
-
 const apiversion = process.env.IEXCLOUD_API_VERSION;
 
-const aToken = `&token=${sk}`;
+export const iexApiRequest = async (endpoint: string, params = {}): Promise<any> => {
+  const { data } = await axios.get(`${baseURL}${apiversion}${endpoint}`, {
+    params: {
+      ...params,
+      token: sk
+    }
+  });
 
-const qToken = `?token=${sk}`;
+  console.log(data);
 
-const chooseToken = (str:string) => {
-  if (str.includes("?")) {
-    return aToken
-  } else {
-    return qToken
-  }
+  return data;
+};
+
+export interface KVP {
+  [k: string]: any;
 }
 
+export class DynamicObject implements KVP{
+  [k: string]: any;
 
-export const iexApiRequest = (endpoint: string): Promise<any> => {
-  const iexRestURL = baseURL + apiversion + endpoint + chooseToken(endpoint);
-  // console.log( iexRestURL );
-  const result: Promise<any> = axios
-    .get(iexRestURL)
-    .then(res => res.data);
-  return result;
-};
+  constructor (theObject: { [x: string]: any; }) {
+    for (const key of Object.keys(theObject)) {
+      this[key] = theObject[key];
+    }
+  }
+}

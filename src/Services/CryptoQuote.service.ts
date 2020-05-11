@@ -1,16 +1,10 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
-
+import { iexApiRequest, KVP } from "./iexcloud.service";
 import { Quote as CryptoQuote } from "./Quote.service";
 
 const cryptoQuote = async (symbol: string): Promise<CryptoQuote> => {
-  const endpoint = `/crypto/${symbol}/quote`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const result = Object.assign(new CryptoQuote(), data);
-  return result;
+  const data: KVP = await iexApiRequest(`/crypto/${symbol}/quote`);
+
+  return new CryptoQuote(data);
 };
 
 export { CryptoQuote, cryptoQuote };

@@ -1,14 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const advancedStats = async (symbol: string): Promise<AdvancedStats> => {
-  const endpoint = `/stock/${symbol}/advanced-stats`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const result = Object.assign(new AdvancedStats(), data);
-  return result;
+  const data: KVP = await iexApiRequest(`/stock/${symbol}/advanced-stats`);
+
+  return new AdvancedStats(data);
 };
 
 export interface IEXAdvancedStats {
@@ -61,7 +56,7 @@ export interface IEXAdvancedStats {
   beta: number;
 }
 
-export class AdvancedStats implements IEXAdvancedStats {
+export class AdvancedStats extends DynamicObject implements IEXAdvancedStats {
   public companyName: string = "";
   public marketcap: number = 0;
   public week52high: number = 0;

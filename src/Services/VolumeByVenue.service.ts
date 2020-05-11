@@ -1,20 +1,14 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const volumeByVenue = async (
   symbol: string
 ): Promise<VolumeByVenue[]> => {
-  const endpoint = `/stock/${symbol}/volume-by-venue`;
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => {
-    const r = Object.assign(new VolumeByVenue(), o);
-    r.symbol = symbol;
-    return r;
-  });
-  return result;
+  const data: KVP[] = await iexApiRequest(`/stock/${symbol}/volume-by-venue`);
+
+  return data.map((o: KVP) => new VolumeByVenue({
+    ...o,
+    symbol
+  }));
 };
 
 export interface IEXVolumeByVenue {
@@ -27,7 +21,7 @@ export interface IEXVolumeByVenue {
   avgMarketPercent: number;
 }
 
-export class VolumeByVenue {
+export class VolumeByVenue extends DynamicObject {
   public symbol: string = "";
   public volume: number = 0;
   public venue: string = "";

@@ -1,14 +1,9 @@
-import { iexApiRequest } from "./iexaccount.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import { DynamicObject, iexApiRequest, KVP } from "./iexaccount.service";
 
 export const accountMetadata = async (): Promise<AccountMetaData> => {
-  const endpoint = `/account/metadata`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const result = Object.assign(new AccountMetaData(), data);
-  return result;
+  const data: KVP = await iexApiRequest(`/account/metadata`);
+
+  return new AccountMetaData(data);
 };
 
 export interface IEXAccountMetaData {
@@ -21,7 +16,7 @@ export interface IEXAccountMetaData {
   messagesUsed: number;
 }
 
-export class AccountMetaData {
+export class AccountMetaData extends DynamicObject {
   public payAsYouGoEnabled: boolean = false;
   public effectiveDate: number = 0;
   public endDateEffective: number = 0;

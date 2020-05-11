@@ -70,16 +70,18 @@ test("earnings", async () => {
 //     expect.arrayContaining([expect.any(iex.EffectiveSpread)])
 //   );
 // });
+
 test("endOfDay", async () => {
   expect(await iex.endOfDay("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.EndOfDay)])
   );
 });
-test("endOfDayCloseOnly", async () => {
-  expect(await iex.endOfDayCloseOnly("AAPL")).toEqual(
-    expect.arrayContaining([expect.any(iex.EndOfDayCloseOnly)])
-  );
-});
+// TODO: is this convenience method still necessary
+// test("endOfDayCloseOnly", async () => {
+//   expect(await iex.endOfDayCloseOnly("AAPL")).toEqual(
+//     expect.arrayContaining([expect.any(iex.EndOfDayCloseOnly)])
+//   );
+// });
 test("estimates", async () => {
   expect(await iex.estimates("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.Estimates)])
@@ -92,21 +94,18 @@ test("financials", async () => {
 });
 test("history EndOfDay", async () => {
   const eod = await iex.history("AAPL");
-  // console.log(eod.slice(0,2))  
   expect(eod).toEqual(
     expect.arrayContaining([expect.any(iex.EndOfDay)])
   )
 });
 test("history Intraday", async () => {
   const intraday = await iex.history("AAPL",{period: "1d"})
-  // console.log(intraday.slice(0,2))
   expect(intraday).toEqual(
     expect.arrayContaining([expect.any(iex.Intraday)])
   )
 });
 test("history Intraday for date ", async () => {
   const intraday = await iex.history("AAPL",{date: "2019-07-08"})
-  // console.log(intraday.slice(0,2))
   expect(intraday).toEqual(
     expect.arrayContaining([expect.any(iex.Intraday)])
   )

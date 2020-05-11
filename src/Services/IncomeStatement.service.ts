@@ -1,23 +1,21 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const incomeStatement = async (
   symbol: string,
   period: string = "quarter",
   lastN: number = 1
 ): Promise<IncomeStatement[]> => {
-  const endpoint = `/stock/${symbol}/income?period=${period}&last=${lastN}`;
-  const data: KVP = await iexApiRequest(endpoint);
-  // console.log(data);
-  const result: any[] = data.income;
-  return result.map((o: KVP) => {
-    const r = Object.assign(new IncomeStatement(), o);
-    r.symbol = symbol;
-    return r;
+  const {
+    income
+  } = await iexApiRequest(`/stock/${symbol}/income`, {
+    last: lastN,
+    period
   });
+
+  return income.map((o: KVP) => new IncomeStatement({
+    ...o,
+    symbol
+  }));
 };
 
 export interface IEXIncomeStatement {
@@ -40,7 +38,7 @@ export interface IEXIncomeStatement {
   netIncomeBasic: number;
 }
 
-export class IncomeStatement {
+export class IncomeStatement extends DynamicObject {
   public symbol: string ="";
   public reportDate: string = "";
   public totalRevenue: number = 0;

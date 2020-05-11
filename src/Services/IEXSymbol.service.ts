@@ -1,14 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const iexSymbols = async (): Promise<IEXSymbol[]> => {
-  const endpoint = "/ref-data/iex/symbols";
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => Object.assign(new IEXSymbol(), o));
-  return result;
+  const data: KVP[] = await iexApiRequest('/ref-data/iex/symbols');
+
+  return data.map((o: KVP) => new IEXSymbol(o));
 };
 
 export interface IEXSymbolI {
@@ -17,7 +12,7 @@ export interface IEXSymbolI {
   isEnabled: boolean;
 }
 
-export class IEXSymbol {
+export class IEXSymbol extends DynamicObject {
   public symbol: string = "";
   public date: string = "";
   public isEnabled: boolean = true;

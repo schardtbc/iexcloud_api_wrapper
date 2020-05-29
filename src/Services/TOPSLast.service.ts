@@ -1,14 +1,11 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const topsLast = async (symbol: string): Promise<TOPSLast[]> => {
-  const endpoint = `/tops/last?symbols=${symbol}`;
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => Object.assign(new TOPSLast(), o));
-  return result;
+  const data: KVP[] = await iexApiRequest('/tops/last', {
+    symbols: symbol
+  });
+
+  return data.map((o: KVP) => new TOPSLast(o));
 };
 
 export interface IEXTOPSLast {
@@ -18,7 +15,7 @@ export interface IEXTOPSLast {
   time: number;
 }
 
-export class TOPSLast {
+export class TOPSLast extends DynamicObject {
   public symbol: string = "";
   public price: number = 0;
   public size: number = 0;

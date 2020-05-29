@@ -1,8 +1,4 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 type timePeriod = "1m" | "3m" | "6m" | "ytd" | "1y" | "2y" | "5y";
 
@@ -13,31 +9,22 @@ export const endOfDay = async (
   chartInterval: number = 1,
   changeFromClose: boolean = true,
   chartReset: boolean = false,
-  chartSimplify: boolean = false
+  chartSimplify: boolean = false,
+  chartCloseOnly: boolean = false
 ): Promise<EndOfDay[]> => {
-  let endpoint = `/stock/${symbol}/chart/${period}?chartCloseOnly=false`;;
-  if (chartLastN > 0) {
-    endpoint = endpoint + `&chartLast=${chartLastN}`;
-  }
-  if (chartInterval > 1) {
-    endpoint = endpoint + `&chartInterval=${chartInterval}`;
-  }
-  if (changeFromClose) {
-    endpoint = endpoint + `&changeFromClose=true`;
-  }
-  if (chartReset) {
-    endpoint = endpoint + `&chartReset=true`;
-  }
-  if (chartSimplify) {
-    endpoint = endpoint + `&chartSimplify=true`;
-  }
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => {
-    const r = Object.assign(new EndOfDay(), o);
-    r.symbol = symbol;
-    return r;
+  const data: KVP[] = await iexApiRequest(`/stock/${symbol}/chart/${period}`, {
+    changeFromClose,
+    chartCloseOnly,
+    chartInterval,
+    chartLast: chartLastN,
+    chartReset,
+    chartSimplify
   });
-  return result;
+
+  return data.map((o: KVP) => new EndOfDay({
+    ...o,
+    symbol
+  }));
 };
 
 export interface IEXEndOfDay {
@@ -59,7 +46,7 @@ export interface IEXEndOfDay {
   changeOverTime: number;
 }
 
-export class EndOfDay implements IEXEndOfDay {
+export class EndOfDay extends DynamicObject implements IEXEndOfDay {
   public symbol: string = "";
   public date: string = "";
   public open: number = 0;

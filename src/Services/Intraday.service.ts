@@ -1,9 +1,6 @@
-import { iexApiRequest } from "./iexcloud.service";
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
-interface KVP {
-  [k: string]: any;
-}
-
+// TODO: is this file necessary?
 export const intraday = async (
   symbol: string,
   chartLastN: number = 0,
@@ -26,12 +23,11 @@ export const intraday = async (
     endpoint = endpoint + `&chartSimplify=true`;
   }
   const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => {
-    const r = Object.assign(new Intraday(), o);
-    r.symbol = symbol;
-    return r;
-  });
-  return result;
+
+  return data.map((o: KVP) => new Intraday({
+    ...o,
+    symbol
+  }));
 };
 
 export interface IEXIntraday {
@@ -58,7 +54,7 @@ export interface IEXIntraday {
   marketChangeOverTime: number;
 }
 
-export class Intraday {
+export class Intraday extends DynamicObject {
   public date: string = "";
   public minute: string = "";
   public label: string = "";

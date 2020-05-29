@@ -1,14 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const marketSymbols = async (): Promise<MarketSymbol[]> => {
-  const endpoint = "/ref-data/symbols";
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => Object.assign(new MarketSymbol(), o));
-  return result;
+  const data: KVP[] = await iexApiRequest("/ref-data/symbols");
+
+  return data.map((o: KVP) => new MarketSymbol(o));
 };
 
 export interface IEXMarketSymbol {
@@ -20,7 +15,7 @@ export interface IEXMarketSymbol {
   iexId: string;
 }
 
-export class MarketSymbol {
+export class MarketSymbol extends DynamicObject{
   public symbol: string = "";
   public name: string = "";
   public date: string = "";

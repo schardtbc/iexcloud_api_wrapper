@@ -1,19 +1,20 @@
-import { iexApiRequest } from "./iexcloud.service";
-
 import { BidOrAsk } from "./Book.service"
-
-export interface KVP {
-  [k: string]: any;
-}
+import { iexApiRequest, KVP } from "./iexcloud.service";
 
 export const deepBook = async (symbol: string): Promise<any> => {
-  const endpoint = `/deep/book?symbols=${symbol}`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const result: DEEPBook[] = Object.keys(data).map( (key:string)  => {
-    const r: DEEPBook = Object.assign(new DEEPBook(), data.key);
-    r.symbol = key;
-    return r;
-  });  
+  const data: KVP = await iexApiRequest('/deep/book', {
+    symbol
+  });
+
+  // TODO: verify this is the intention
+  for (const key of Object.keys(data)) {
+    data[key] = {
+      ...(new DEEPBook()),
+      ...data[key],
+      symbol
+    }
+  }
+
   return data;
 };
 

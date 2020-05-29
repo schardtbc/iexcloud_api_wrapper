@@ -1,8 +1,4 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 type timePeriod = "next" | "1m" | "3m" | "6m" | "ytd" | "1y" | "2y" | "5y";
 
@@ -10,14 +6,12 @@ export const splits = async (
   symbol: string,
   period: timePeriod = "1m"
 ): Promise<Splits[]> => {
-  const endpoint = `/stock/${symbol}/splits/${period}`;
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => {
-    const r = Object.assign(new Splits(), o);
-    r.symbol = symbol;
-    return r;
-  });
-  return result;
+  const data: KVP[] = await iexApiRequest(`/stock/${symbol}/splits/${period}`);
+
+  return data.map((o: KVP) => new Splits({
+    ...o,
+    symbol
+  }));
 };
 
 export interface IEXSplits {
@@ -29,7 +23,7 @@ export interface IEXSplits {
   description: string;
 }
 
-export class Splits implements IEXSplits {
+export class Splits extends DynamicObject implements IEXSplits {
   public exDate: string = "";
   public declaredDate: string = "";
   public ratio: number = 0;

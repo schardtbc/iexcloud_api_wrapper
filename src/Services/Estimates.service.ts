@@ -1,22 +1,15 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const estimates = async (
   symbol: string,
   lastN: number = 1
 ): Promise<Estimates[]> => {
-  const endpoint = `/stock/${symbol}/estimates/${lastN}`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const tmp: KVP[] = data.estimates;
-  const result = tmp.map((o: KVP) => {
-    const r = Object.assign(new Estimates(), o);
-    r.symbol = symbol;
-    return r;
-  });
-  return result;
+  const data: KVP = await iexApiRequest(`/stock/${symbol}/estimates/${lastN}`);
+
+  return data.estimates.map((o: KVP) => new Estimates({
+    ...o,
+    symbol
+  }));
 };
 
 export interface IEXEstimates {
@@ -27,7 +20,7 @@ export interface IEXEstimates {
   reportDate: string;
 }
 
-export class Estimates {
+export class Estimates extends DynamicObject {
   public consensusEPS: number = 0;
   public numberOfEstimates: number = 0;
   public fiscalPeriod: string = "";

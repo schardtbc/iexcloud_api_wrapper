@@ -1,8 +1,4 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export type SentimentType = "daily" | "minute";
 
@@ -15,20 +11,19 @@ export const socialSentiment = async (
   if (date) {
     endpoint = endpoint +"/"+ date.replace(/-/g, "");
   }
+
   if (type.includes("daily")) {
-    const data: KVP = await iexApiRequest(endpoint);
-    const result: SocialSentiment = Object.assign(new SocialSentiment(),data);
-    return result;
-  } else {
-    const data: KVP[] = await iexApiRequest(endpoint);
-    const result = data.map((o: KVP) => {
-      const r = Object.assign(new SocialSentiment(), o);
-      r.symbol = symbol;
-      return r;
-    });
-    return result;
+    const result: KVP = await iexApiRequest(endpoint);
+
+    return new SocialSentiment(result);
   }
-  return null;
+
+  const data: KVP[] = await iexApiRequest(endpoint);
+
+  return data.map((o: KVP) => new SocialSentiment({
+    ...o,
+    symbol
+  }));
 };
 
 export interface IEXSocialSentiment {
@@ -41,7 +36,7 @@ export interface IEXSocialSentiment {
   negative: number;
 }
 
-export class SocialSentiment implements IEXSocialSentiment {
+export class SocialSentiment extends DynamicObject implements IEXSocialSentiment {
   public symbol: string = "";
   public date: string = "";
   public minute: string | null = null;

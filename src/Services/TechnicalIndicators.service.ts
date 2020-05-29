@@ -1,8 +1,4 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest} from "./iexcloud.service";
 
 export const indicators = [
   'abs',
@@ -109,7 +105,7 @@ export const indicators = [
   'willr',
   'wma',
   'zlema'
-] as const; 
+];
 
 export const technicalIndicators = async (
   symbol: string,
@@ -117,36 +113,36 @@ export const technicalIndicators = async (
   range: string = "ytd",
   inputs: number[]=[]
 ): Promise<TechnicalIndicator[]> => {
-  const inputsString = inputs.reduce((last, current, num) => {
-    return `${last}&input${num+1}=${current}`;
-  },''); 
-  let endpoint = `/stock/${symbol}/indicator/${indicator}?range=${range}${inputsString}`;
+  const params = inputs.reduce((inputParams, current, num) => {
+    inputParams[`input${num + 1}`] = current;
 
-  const data: KVP = await iexApiRequest(endpoint);
-  const result: TechnicalIndicator[] = [];
-  data.chart.forEach((chart: any, location: number) => {
-    const indicator: number[] = [];
-    data.indicator.forEach((indicatorsArray: number[]) => {
-      indicator.push(indicatorsArray[location]);
-    });
-    const r = Object.assign(new TechnicalIndicator, {
-      symbol,
+    return inputParams;
+  }, {
+    range
+  } as any);
+
+  const data = await iexApiRequest(`/stock/${symbol}/indicator/${indicator}`, params);
+
+  return data.chart.map((chart: any, location: number) => {
+    const resultIndicators: number[] = data.indicator.map(
+        (indicatorsArray: number[]) => indicatorsArray[location]
+    );
+
+    return new TechnicalIndicator({
       chart,
-      indicator
+      indicator: resultIndicators,
+      symbol
     });
-    result.push(r);
   });
-
-  return result;
 };
 
 export interface IEXTechnicalIndicator {
   symbol: string;
-  indicator: Array<number>;
+  indicator: number[];
   chart: any;
 }
 
-export class TechnicalIndicator implements IEXTechnicalIndicator{
+export class TechnicalIndicator extends DynamicObject implements IEXTechnicalIndicator{
   public symbol = "";
   public indicator = [];
   public chart={};

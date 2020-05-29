@@ -1,15 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const delayedQuote = async (symbol: string): Promise<DelayedQuote> => {
-  const endpoint = `/stock/${symbol}/delayed-quote`;
-  const data: KVP = await iexApiRequest(endpoint);
-  // console.log(data);
-  const result = Object.assign(new DelayedQuote(), data);
-  return result;
+  const data: KVP = await iexApiRequest(`/stock/${symbol}/delayed-quote`);
+
+  return new DelayedQuote(data);
 };
 
 export interface IEXDelayedQuote {
@@ -23,7 +17,7 @@ export interface IEXDelayedQuote {
   processedTime: number;
 }
 
-export class DelayedQuote implements IEXDelayedQuote {
+export class DelayedQuote extends DynamicObject implements IEXDelayedQuote {
   public symbol: string = "";
   public delayedPrice: number = 0;
   public delayedSize: number = 0;

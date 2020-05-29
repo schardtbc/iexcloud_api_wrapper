@@ -1,14 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const keyStats = async (symbol: string): Promise<KeyStats> => {
-  const endpoint = `/stock/${symbol}/stats`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const result = Object.assign(new KeyStats(), data);
-  return result;
+  const data: KVP = await iexApiRequest(`/stock/${symbol}/stats`);
+
+  return new KeyStats(data);
 };
 
 export interface IEXKeyStats {
@@ -45,7 +40,7 @@ export interface IEXKeyStats {
   day5ChangePercent: number;
 }
 
-export class KeyStats implements IEXKeyStats {
+export class KeyStats extends DynamicObject implements IEXKeyStats {
   public companyName: string = "";
   public marketcap: number = 0;
   public week52high: number = 0;

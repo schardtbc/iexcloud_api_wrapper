@@ -1,15 +1,11 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const auction = async (symbol: string): Promise<Auction> => {
-  const endpoint = `/deep/auction?symbols=${symbol}`;
-  const data: KVP = await iexApiRequest(endpoint);
-  // console.log(data);
-  const result = Object.assign(new Auction(), data);
-  return result;
+  const data: KVP = await iexApiRequest('/deep/auction', {
+    symbols: symbol
+  });
+
+  return new Auction(data);
 };
 
 export interface IEXAuction {
@@ -27,7 +23,7 @@ export interface IEXAuction {
   lastUpdate: number;
 }
 
-export class Auction implements IEXAuction {
+export class Auction extends DynamicObject implements IEXAuction {
   public auctionType: string = "";
   public pairedShares: number = 0;
   public imbalanceShares: number = 0;

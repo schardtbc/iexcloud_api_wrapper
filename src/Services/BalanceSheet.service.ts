@@ -1,8 +1,4 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 /**
  * Pulls balance sheet data. Available quarterly (4 quarters) and annually (4 years)
@@ -20,15 +16,17 @@ export const balanceSheet = async (
   lastN: number =1
 
 ): Promise<BalanceSheet[]> => {
-  const endpoint = `/stock/${symbol}/balance-sheet?period=${period}&last=${lastN}`;
-  const data: KVP = await iexApiRequest(endpoint);
-  // console.log(data);
-  const result: any[] = data.balancesheet;
-  return result.map((o: KVP) => {
-    const r = Object.assign(new BalanceSheet(), o);
-    r.symbol = symbol;
-    return r;
+  const {
+    balancesheet
+  } = await iexApiRequest(`/stock/${symbol}/balance-sheet`, {
+      last: lastN,
+      period
   });
+
+  return balancesheet.map((o: KVP) => new BalanceSheet({
+    ...o,
+    symbol
+  }));
 };
 
 export interface IEXBalanceSheet {
@@ -62,7 +60,7 @@ export interface IEXBalanceSheet {
   netTangibleAssets: number;
 }
 
-export class BalanceSheet implements IEXBalanceSheet {
+export class BalanceSheet extends DynamicObject implements IEXBalanceSheet {
   public symbol: string = "";
   public reportDate: string = "";
   public currentCash: number = 0;

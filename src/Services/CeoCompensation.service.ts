@@ -1,15 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const ceoCompensation = async (symbol: string): Promise<CeoCompensation> => {
-  const endpoint = `/stock/${symbol}/ceo-compensation`;
-  const data: KVP = await iexApiRequest(endpoint);
-  // console.log(data);
-  const result = Object.assign(new CeoCompensation(), data);
-  return result;
+  const data: KVP = await iexApiRequest(`/stock/${symbol}/ceo-compensation`);
+
+  return new CeoCompensation(data);
 };
 
 export interface IEXCeoCompensation {
@@ -28,7 +22,7 @@ export interface IEXCeoCompensation {
     year: string;
 }
 
-export class CeoCompensation implements IEXCeoCompensation {
+export class CeoCompensation extends DynamicObject implements IEXCeoCompensation {
     public symbol: string = "";
     public name: string = "";
     public companyName: string = "";

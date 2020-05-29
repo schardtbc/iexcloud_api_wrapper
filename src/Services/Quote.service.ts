@@ -1,14 +1,9 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const quote = async (symbol: string): Promise<Quote> => {
-  const endpoint = `/stock/${symbol}/quote`;
-  const data: KVP = await iexApiRequest(endpoint);
-  const result = Object.assign(new Quote(), data);
-  return result;
+  const data: KVP = await iexApiRequest(`/stock/${symbol}/quote`);
+
+  return new Quote(data);
 };
 
 export interface IEXQuote {
@@ -51,7 +46,7 @@ export interface IEXQuote {
   ytdChange: number;
 }
 
-export class Quote implements IEXQuote {
+export class Quote extends DynamicObject implements IEXQuote {
   public symbol: string = "";
   public companyName: string = "";
   public calculationPrice: string = "";

@@ -1,14 +1,11 @@
-import { iexApiRequest } from "./iexcloud.service";
-
-interface KVP {
-  [k: string]: any;
-}
+import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
 
 export const tops = async (symbol: string): Promise<TOPS[]> => {
-  const endpoint = `/tops?symbols=${symbol}`;
-  const data: KVP[] = await iexApiRequest(endpoint);
-  const result = data.map((o: KVP) => Object.assign(new TOPS(), o));
-  return result;
+  const data: KVP[] = await iexApiRequest('/tops', {
+    symbols: symbol
+  });
+
+  return data.map((o: KVP) => new TOPS(o));
 };
 
 export interface IEXTOPS {
@@ -27,7 +24,7 @@ export interface IEXTOPS {
   securityType: string;
 }
 
-export class TOPS {
+export class TOPS extends DynamicObject {
   public symbol: string = "";
   public marketPercent: number = 0;
   public bidSize: number = 0;

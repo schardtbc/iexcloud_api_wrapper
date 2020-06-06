@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>AccountMetaData | iexcloud_api_wrapper</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for iexcloud_api_wrapper">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -73,14 +73,35 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">AccountMetaData</span>
+						<a href="_accountservices_iexaccount_service_.dynamicobject.html" class="tsd-signature-type">DynamicObject</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">AccountMetaData</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_accountservices_iexaccount_service_.kvp.html" class="tsd-signature-type">KVP</a></li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-kind-class tsd-parent-kind-module">
+				<h3 class="tsd-before-signature">Indexable</h3>
+				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>k: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="_accountservices_metadata_service_.accountmetadata.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
@@ -96,75 +117,107 @@
 					</div>
 				</section>
 			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Account<wbr>Meta<wbr>Data<span class="tsd-signature-symbol">(</span>theObject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_accountservices_metadata_service_.accountmetadata.html" class="tsd-signature-type">AccountMetaData</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_accountservices_iexaccount_service_.dynamicobject.html">DynamicObject</a>.<a href="_accountservices_iexaccount_service_.dynamicobject.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/jdgriffith/iexcloud_api_wrapper/blob/1a2b142/src/AccountServices/iexaccount.service.ts#L30">AccountServices/iexaccount.service.ts:30</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>theObject: <span class="tsd-signature-symbol">{}</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-index-signature">
+											<h5><span class="tsd-signature-symbol">[</span>x: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_accountservices_metadata_service_.accountmetadata.html" class="tsd-signature-type">AccountMetaData</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="effectivedate" class="tsd-anchor"></a>
 					<h3>effective<wbr>Date</h3>
-					<div class="tsd-signature tsd-kind-icon">effective<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<div class="tsd-signature tsd-kind-icon">effective<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/schardtbc/iexcloud_api_wrapper/blob/bc45992/src/AccountServices/MetaData.service.ts#L26">AccountServices/MetaData.service.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/jdgriffith/iexcloud_api_wrapper/blob/1a2b142/src/AccountServices/MetaData.service.ts#L21">AccountServices/MetaData.service.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="enddateeffective" class="tsd-anchor"></a>
 					<h3>end<wbr>Date<wbr>Effective</h3>
-					<div class="tsd-signature tsd-kind-icon">end<wbr>Date<wbr>Effective<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<div class="tsd-signature tsd-kind-icon">end<wbr>Date<wbr>Effective<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/schardtbc/iexcloud_api_wrapper/blob/bc45992/src/AccountServices/MetaData.service.ts#L27">AccountServices/MetaData.service.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/jdgriffith/iexcloud_api_wrapper/blob/1a2b142/src/AccountServices/MetaData.service.ts#L22">AccountServices/MetaData.service.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="messagelimit" class="tsd-anchor"></a>
 					<h3>message<wbr>Limit</h3>
-					<div class="tsd-signature tsd-kind-icon">message<wbr>Limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<div class="tsd-signature tsd-kind-icon">message<wbr>Limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/schardtbc/iexcloud_api_wrapper/blob/bc45992/src/AccountServices/MetaData.service.ts#L30">AccountServices/MetaData.service.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/jdgriffith/iexcloud_api_wrapper/blob/1a2b142/src/AccountServices/MetaData.service.ts#L25">AccountServices/MetaData.service.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="messagesused" class="tsd-anchor"></a>
 					<h3>messages<wbr>Used</h3>
-					<div class="tsd-signature tsd-kind-icon">messages<wbr>Used<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<div class="tsd-signature tsd-kind-icon">messages<wbr>Used<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/schardtbc/iexcloud_api_wrapper/blob/bc45992/src/AccountServices/MetaData.service.ts#L31">AccountServices/MetaData.service.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/jdgriffith/iexcloud_api_wrapper/blob/1a2b142/src/AccountServices/MetaData.service.ts#L26">AccountServices/MetaData.service.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="payasyougoenabled" class="tsd-anchor"></a>
 					<h3>pay<wbr>AsYou<wbr>GoEnabled</h3>
-					<div class="tsd-signature tsd-kind-icon">pay<wbr>AsYou<wbr>GoEnabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<div class="tsd-signature tsd-kind-icon">pay<wbr>AsYou<wbr>GoEnabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/schardtbc/iexcloud_api_wrapper/blob/bc45992/src/AccountServices/MetaData.service.ts#L25">AccountServices/MetaData.service.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/jdgriffith/iexcloud_api_wrapper/blob/1a2b142/src/AccountServices/MetaData.service.ts#L20">AccountServices/MetaData.service.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="subscriptiontermtype" class="tsd-anchor"></a>
 					<h3>subscription<wbr>Term<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">subscription<wbr>Term<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<div class="tsd-signature tsd-kind-icon">subscription<wbr>Term<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/schardtbc/iexcloud_api_wrapper/blob/bc45992/src/AccountServices/MetaData.service.ts#L28">AccountServices/MetaData.service.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/jdgriffith/iexcloud_api_wrapper/blob/1a2b142/src/AccountServices/MetaData.service.ts#L23">AccountServices/MetaData.service.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="tiername" class="tsd-anchor"></a>
 					<h3>tier<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">tier<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
+					<div class="tsd-signature tsd-kind-icon">tier<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/schardtbc/iexcloud_api_wrapper/blob/bc45992/src/AccountServices/MetaData.service.ts#L29">AccountServices/MetaData.service.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/jdgriffith/iexcloud_api_wrapper/blob/1a2b142/src/AccountServices/MetaData.service.ts#L24">AccountServices/MetaData.service.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -176,8 +229,8 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_accountservices_metadata_service_.html">"<wbr>Account<wbr>Services/<wbr>Meta<wbr>Data.service"</a>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_accountservices_metadata_service_.html">&quot;<wbr>Account<wbr>Services/<wbr>Meta<wbr>Data.service&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -185,9 +238,12 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
 						<a href="_accountservices_metadata_service_.accountmetadata.html" class="tsd-kind-icon">Account<wbr>Meta<wbr>Data</a>
 						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+								<a href="_accountservices_metadata_service_.accountmetadata.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_accountservices_metadata_service_.accountmetadata.html#effectivedate" class="tsd-kind-icon">effective<wbr>Date</a>
 							</li>
@@ -213,13 +269,10 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_accountservices_metadata_service_.iexaccountmetadata.html" class="tsd-kind-icon">IEXAccount<wbr>Meta<wbr>Data</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../interfaces/_accountservices_metadata_service_.kvp.html" class="tsd-kind-icon">KVP</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="../modules/_accountservices_metadata_service_.html#accountmetadata-1" class="tsd-kind-icon">account<wbr>Metadata</a>
 					</li>
 				</ul>
@@ -232,62 +285,25 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

@@ -5,17 +5,18 @@ export const incomeStatement = async (
   period: string = "quarter",
   lastN: number = 1
 ): Promise<IncomeStatement[]> => {
-  const {
-    income
-  } = await iexApiRequest(`/stock/${symbol}/income`, {
+  const { income } = await iexApiRequest(`/stock/${symbol}/income`, {
     last: lastN,
-    period
+    period,
   });
 
-  return income.map((o: KVP) => new IncomeStatement({
-    ...o,
-    symbol
-  }));
+  return income.map(
+    (o: KVP) =>
+      new IncomeStatement({
+        ...o,
+        symbol,
+      })
+  );
 };
 
 export interface IEXIncomeStatement {
@@ -39,7 +40,7 @@ export interface IEXIncomeStatement {
 }
 
 export class IncomeStatement extends DynamicObject {
-  public symbol: string ="";
+  public symbol: string = "";
   public reportDate: string = "";
   public totalRevenue: number = 0;
   public costOfRevenue: number = 0;

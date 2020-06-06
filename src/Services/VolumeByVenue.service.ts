@@ -1,14 +1,17 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const volumeByVenue = async (
   symbol: string
 ): Promise<VolumeByVenue[]> => {
   const data: KVP[] = await iexApiRequest(`/stock/${symbol}/volume-by-venue`);
 
-  return data.map((o: KVP) => new VolumeByVenue({
-    ...o,
-    symbol
-  }));
+  return data.map(
+    (o: KVP) =>
+      new VolumeByVenue({
+        ...o,
+        symbol,
+      })
+  );
 };
 
 export interface IEXVolumeByVenue {

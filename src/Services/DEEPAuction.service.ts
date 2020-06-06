@@ -1,8 +1,8 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const auction = async (symbol: string): Promise<Auction> => {
-  const data: KVP = await iexApiRequest('/deep/auction', {
-    symbols: symbol
+  const data: KVP = await iexApiRequest("/deep/auction", {
+    symbols: symbol,
   });
 
   return new Auction(data);

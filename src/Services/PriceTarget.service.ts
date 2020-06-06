@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const priceTarget = async (symbol: string): Promise<PriceTarget> => {
   const data: KVP = await iexApiRequest(`/stock/${symbol}/price-target`);

@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const company = async (symbol: string): Promise<Company> => {
   const data: KVP = await iexApiRequest(`/stock/${symbol}/company`);
@@ -16,15 +16,15 @@ export interface IEXCompany {
   description: string;
   issueType: string;
   sector: string;
-  securityName: string | null
+  securityName: string | null;
   tags: string[];
-  employees: number | null
+  employees: number | null;
 }
 
 export class Company extends DynamicObject {
   public symbol: string = "";
   public companyName: string = "";
-  public CEO: string="";
+  public CEO: string = "";
   public exchange: string = "";
   public industry: string = "";
   public website: string = "";

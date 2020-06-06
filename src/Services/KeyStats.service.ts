@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const keyStats = async (symbol: string): Promise<KeyStats> => {
   const data: KVP = await iexApiRequest(`/stock/${symbol}/stats`);
@@ -55,13 +55,13 @@ export class KeyStats extends DynamicObject implements IEXKeyStats {
   public day50MovingAvg: number = 0;
   public employees: number = 0;
   public ttmEPS: number = 0;
-  public ttmDividendRate: number=0;
-  public dividendYield: number=0;
-  public nextDividendDate: string="";
-  public exDividendDate: string="";
-  public nextEarningsDate: string="";
-  public peRatio: number=0;
-  public beta: number=0;
+  public ttmDividendRate: number = 0;
+  public dividendYield: number = 0;
+  public nextDividendDate: string = "";
+  public exDividendDate: string = "";
+  public nextEarningsDate: string = "";
+  public peRatio: number = 0;
+  public beta: number = 0;
   public maxChangePercent: number = 0;
   public year5ChangePercent: number = 0;
   public year2ChangePercent: number = 0;

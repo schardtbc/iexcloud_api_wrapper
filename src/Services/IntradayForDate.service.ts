@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const intradayForDate = async (
   symbol: string,
@@ -9,7 +9,7 @@ export const intradayForDate = async (
   chartReset: boolean = false,
   chartSimplify: boolean = false
 ): Promise<IntradayIEXOnly[]> => {
-  date = date.replace(/-/g,"");
+  date = date.replace(/-/g, "");
   let endpoint = `/stock/${symbol}/chart/date/${date}?chartIEXOnly=true`;
   if (chartLastN > 0) {
     endpoint = endpoint + `&chartLast=${chartLastN}`;
@@ -28,10 +28,12 @@ export const intradayForDate = async (
   }
 
   const data: KVP[] = await iexApiRequest(endpoint);
-  return data.map((o: KVP) => new IntradayIEXOnly({
-    ...o.
-    symbol
-  }));
+  return data.map(
+    (o: KVP) =>
+      new IntradayIEXOnly({
+        ...o.symbol,
+      })
+  );
 };
 
 export interface IEXIntradayIEXOnly {
@@ -49,7 +51,8 @@ export interface IEXIntradayIEXOnly {
   changeOverTime: number;
 }
 
-export class IntradayIEXOnly extends DynamicObject implements IEXIntradayIEXOnly {
+export class IntradayIEXOnly extends DynamicObject
+  implements IEXIntradayIEXOnly {
   public date: string = "";
   public minute: string = "";
   public label: string = "";

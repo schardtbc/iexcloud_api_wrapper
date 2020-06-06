@@ -14,5 +14,5 @@ export const list = async (
 ): Promise<Quote[]> => {
   const data: KVP[] = await iexApiRequest(`/stock/market/list/${listType}`);
 
-  return data.map(o => new Quote(o));
+  return data.map((o) => new Quote(o));
 };

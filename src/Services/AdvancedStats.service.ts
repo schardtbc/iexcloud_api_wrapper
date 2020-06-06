@@ -50,7 +50,7 @@ export interface IEXAdvancedStats {
   enterpriseValue: number;
   enterpriseValueToRevenue: number;
   priceToSales: number;
-  priceToBook:  number;
+  priceToBook: number;
   forwardPERatio: number | null;
   pegRatio: number;
   beta: number;
@@ -71,12 +71,12 @@ export class AdvancedStats extends DynamicObject implements IEXAdvancedStats {
   public day50MovingAvg: number = 0;
   public employees: number = 0;
   public ttmEPS: number = 0;
-  public ttmDividendRate: number=0;
-  public dividendYield: number=0;
-  public nextDividendDate: string="";
-  public exDividendDate: string="";
-  public nextEarningsDate: string="";
-  public peRatio: number=0;
+  public ttmDividendRate: number = 0;
+  public dividendYield: number = 0;
+  public nextDividendDate: string = "";
+  public exDividendDate: string = "";
+  public nextEarningsDate: string = "";
+  public peRatio: number = 0;
   public maxChangePercent: number = 0;
   public year5ChangePercent: number = 0;
   public year2ChangePercent: number = 0;
@@ -100,7 +100,7 @@ export class AdvancedStats extends DynamicObject implements IEXAdvancedStats {
   public enterpriseValue: number = 0;
   public enterpriseValueToRevenue: number = 0;
   public priceToSales: number = 0;
-  public priceToBook:  number = 0;
+  public priceToBook: number = 0;
   public forwardPERatio: number | null = 0;
   public pegRatio: number = 0;
   public beta: number = 0;

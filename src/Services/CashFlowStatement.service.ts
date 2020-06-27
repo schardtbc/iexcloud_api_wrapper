@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 /**
  * Pulls cash flow data. Available quarterly (4 quarters) and annually (4 years)
@@ -19,17 +19,18 @@ export const cashFlowStatement = async (
   period: string = "quarter",
   lastN: number = 1
 ): Promise<CashFlowStatement[]> => {
-  const {
-    cashflow
-  } = await iexApiRequest(`/stock/${symbol}/cash-flow`, {
-      last: lastN,
-      period
+  const { cashflow } = await iexApiRequest(`/stock/${symbol}/cash-flow`, {
+    last: lastN,
+    period,
   });
 
-  return cashflow.map((o: KVP) => new CashFlowStatement({
-    ...o,
-    symbol
-  }));
+  return cashflow.map(
+    (o: KVP) =>
+      new CashFlowStatement({
+        ...o,
+        symbol,
+      })
+  );
 };
 
 export interface IEXCashFlow {
@@ -53,7 +54,7 @@ export interface IEXCashFlow {
 }
 
 export class CashFlowStatement extends DynamicObject implements IEXCashFlow {
-  public symbol:string = "";
+  public symbol: string = "";
   public reportDate: string = "";
   public netIncome: number = 0;
   public depreciation: number = 0;

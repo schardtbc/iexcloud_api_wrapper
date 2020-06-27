@@ -1,16 +1,17 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const deepTrades = async (symbol: string): Promise<DEEPTrade[]> => {
-  const data: KVP = await iexApiRequest('/deep/trades', {
-    symbol
+  const data: KVP = await iexApiRequest("/deep/trades", {
+    symbol,
   });
 
-  return Object
-      .keys(data)
-      .map( (key:string)  => new DEEPTrade({
+  return Object.keys(data).map(
+    (key: string) =>
+      new DEEPTrade({
         ...data[key],
-        symbol
-      }));
+        symbol,
+      })
+  );
 };
 
 export interface IEXDEEPTrade {

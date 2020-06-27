@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const delayedQuote = async (symbol: string): Promise<DelayedQuote> => {
   const data: KVP = await iexApiRequest(`/stock/${symbol}/delayed-quote`);

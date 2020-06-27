@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 // TODO: is this file necessary?
 export const intraday = async (
@@ -24,10 +24,13 @@ export const intraday = async (
   }
   const data: KVP[] = await iexApiRequest(endpoint);
 
-  return data.map((o: KVP) => new Intraday({
-    ...o,
-    symbol
-  }));
+  return data.map(
+    (o: KVP) =>
+      new Intraday({
+        ...o,
+        symbol,
+      })
+  );
 };
 
 export interface IEXIntraday {

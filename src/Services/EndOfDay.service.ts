@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 type timePeriod = "1m" | "3m" | "6m" | "ytd" | "1y" | "2y" | "5y";
 
@@ -18,13 +18,16 @@ export const endOfDay = async (
     chartInterval,
     chartLast: chartLastN,
     chartReset,
-    chartSimplify
+    chartSimplify,
   });
 
-  return data.map((o: KVP) => new EndOfDay({
-    ...o,
-    symbol
-  }));
+  return data.map(
+    (o: KVP) =>
+      new EndOfDay({
+        ...o,
+        symbol,
+      })
+  );
 };
 
 export interface IEXEndOfDay {

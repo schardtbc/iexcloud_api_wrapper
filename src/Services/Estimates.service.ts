@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const estimates = async (
   symbol: string,
@@ -6,10 +6,13 @@ export const estimates = async (
 ): Promise<Estimates[]> => {
   const data: KVP = await iexApiRequest(`/stock/${symbol}/estimates/${lastN}`);
 
-  return data.estimates.map((o: KVP) => new Estimates({
-    ...o,
-    symbol
-  }));
+  return data.estimates.map(
+    (o: KVP) =>
+      new Estimates({
+        ...o,
+        symbol,
+      })
+  );
 };
 
 export interface IEXEstimates {

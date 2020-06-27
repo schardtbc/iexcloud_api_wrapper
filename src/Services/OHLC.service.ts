@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const ohlc = async (symbol: string): Promise<OHLC> => {
   const data: KVP = await iexApiRequest(`/stock/${symbol}/ohlc`);
@@ -10,7 +10,7 @@ export const ohlc = async (symbol: string): Promise<OHLC> => {
     low: data.low,
     open: data.open.price,
     openTime: data.open.time,
-    symbol
+    symbol,
   });
 };
 
@@ -24,7 +24,7 @@ export interface IEXOHLC {
   closeTime: number;
 }
 
-export class OHLC extends DynamicObject{
+export class OHLC extends DynamicObject {
   public symbol: string = "";
   public open: number = 0;
   public close: number = 0;

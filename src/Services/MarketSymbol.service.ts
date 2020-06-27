@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const marketSymbols = async (): Promise<MarketSymbol[]> => {
   const data: KVP[] = await iexApiRequest("/ref-data/symbols");
@@ -15,7 +15,7 @@ export interface IEXMarketSymbol {
   iexId: string;
 }
 
-export class MarketSymbol extends DynamicObject{
+export class MarketSymbol extends DynamicObject {
   public symbol: string = "";
   public name: string = "";
   public date: string = "";

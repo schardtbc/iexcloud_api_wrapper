@@ -1,7 +1,7 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 export const iexSymbols = async (): Promise<IEXSymbol[]> => {
-  const data: KVP[] = await iexApiRequest('/ref-data/iex/symbols');
+  const data: KVP[] = await iexApiRequest("/ref-data/iex/symbols");
 
   return data.map((o: KVP) => new IEXSymbol(o));
 };

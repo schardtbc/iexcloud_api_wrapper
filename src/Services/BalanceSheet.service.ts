@@ -13,20 +13,23 @@ import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 export const balanceSheet = async (
   symbol: string,
   period: string = "quarter",
-  lastN: number =1
-
+  lastN: number = 1
 ): Promise<BalanceSheet[]> => {
-  const {
-    balancesheet
-  } = await iexApiRequest(`/stock/${symbol}/balance-sheet`, {
+  const { balancesheet } = await iexApiRequest(
+    `/stock/${symbol}/balance-sheet`,
+    {
       last: lastN,
-      period
-  });
+      period,
+    }
+  );
 
-  return balancesheet.map((o: KVP) => new BalanceSheet({
-    ...o,
-    symbol
-  }));
+  return balancesheet.map(
+    (o: KVP) =>
+      new BalanceSheet({
+        ...o,
+        symbol,
+      })
+  );
 };
 
 export interface IEXBalanceSheet {

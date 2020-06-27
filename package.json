@@ -1,13 +1,13 @@
 {
   "name": "iexcloud_api_wrapper",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "IEX Investors Exchange, IEXCLOUD API Wrapper, Financial Data,TypeScript",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest --config jestconfig.json",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
@@ -34,25 +34,25 @@
   },
   "homepage": "https://github.com/schardtbc/iexcloud_api_wrapper#readme",
   "devDependencies": {
-    "@types/jest": "24.0.15",
+    "@types/jest": "25.2.3",
     "jest": "^26.0.1",
-    "nyc": "14.1.1",
-    "prettier": "1.18.2",
-    "ts-jest": "^25.5.1",
-    "tslint": "5.18.0",
+    "nyc": "15.1.0",
+    "prettier": "2.0.5",
+    "ts-jest": "^26.1.0",
+    "tslint": "6.1.2",
     "tslint-config-prettier": "1.18.0",
-    "typedoc": "^0.17.6",
-    "typescript": "3.5.2"
+    "typedoc": "^0.17.7",
+    "typescript": "3.9.5"
   },
   "files": [
     "lib/**/*",
     "USAGE.md"
   ],
   "dependencies": {
-    "@types/dotenv": "6.1.1",
-    "@types/eventsource": "1.1.0",
-    "axios": "0.19.0",
-    "dotenv": "6.2.0",
+    "@types/dotenv": "8.2.0",
+    "@types/eventsource": "1.1.2",
+    "axios": "0.19.2",
+    "dotenv": "8.2.0",
     "eventsource": "1.0.7"
   }
 }

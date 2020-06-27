@@ -12,12 +12,16 @@ const apiversion = process.env.IEXCLOUD_API_VERSION;
 export const enablePayAsYouGo = async (): Promise<any> => {
   const restURL = `${baseURL}${apiversion}/account/payasyougo`;
 
-  const { data } = await axios.post(restURL, {}, {
-    params: {
-      allow: true,
-      token: sk
+  const { data } = await axios.post(
+    restURL,
+    {},
+    {
+      params: {
+        allow: true,
+        token: sk,
+      },
     }
-  });
+  );
 
   return data;
 };
@@ -25,12 +29,16 @@ export const enablePayAsYouGo = async (): Promise<any> => {
 export const disablePayAsYouGo = async (): Promise<any> => {
   const restURL = `${baseURL}${apiversion}/account/payasyougo`;
 
-  const { data } = await axios.post(restURL, {}, {
-    params: {
-      allow: true,
-      token: sk
+  const { data } = await axios.post(
+    restURL,
+    {},
+    {
+      params: {
+        allow: true,
+        token: sk,
+      },
     }
-  });
+  );
 
   return data;
 };

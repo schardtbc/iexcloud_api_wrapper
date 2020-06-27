@@ -1,4 +1,4 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 type timePeriod = "next" | "1m" | "3m" | "6m" | "ytd" | "1y" | "2y" | "5y";
 
@@ -6,12 +6,17 @@ export const dividends = async (
   symbol: string,
   range: timePeriod = "1m"
 ): Promise<Dividends[]> => {
-  const data: KVP[] = await iexApiRequest(`/stock/${symbol}/dividends/${range}`);
+  const data: KVP[] = await iexApiRequest(
+    `/stock/${symbol}/dividends/${range}`
+  );
 
-  return data.map((o: KVP) => new Dividends({
-    ...o,
-    symbol
-  }));
+  return data.map(
+    (o: KVP) =>
+      new Dividends({
+        ...o,
+        symbol,
+      })
+  );
 };
 
 export interface IEXDividends {

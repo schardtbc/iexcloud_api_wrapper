@@ -1,12 +1,12 @@
-import {DynamicObject, iexApiRequest, KVP} from "./iexcloud.service";
+import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
 
 type PriceType = "Open" | "Close";
 
 export const officialPrice = async (
   symbol: string
 ): Promise<DEEPOfficialPrice> => {
-  const data: KVP = await iexApiRequest('/deep/official-price', {
-    symbols: symbol
+  const data: KVP = await iexApiRequest("/deep/official-price", {
+    symbols: symbol,
   });
 
   return new DEEPOfficialPrice(data);

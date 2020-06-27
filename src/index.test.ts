@@ -2,12 +2,10 @@
  * @jest-environment node
  */
 
-
 import * as iex from "./index";
 
-
 test("advancedStats", async () => {
-  expect(await iex.advancedStats("AAPL")).toBeInstanceOf(iex.AdvancedStats)
+  expect(await iex.advancedStats("AAPL")).toBeInstanceOf(iex.AdvancedStats);
 });
 test("balanceSheet", async () => {
   expect(await iex.balanceSheet("AAPL")).toEqual(
@@ -94,28 +92,23 @@ test("financials", async () => {
 });
 test("history EndOfDay", async () => {
   const eod = await iex.history("AAPL");
-  expect(eod).toEqual(
-    expect.arrayContaining([expect.any(iex.EndOfDay)])
-  )
+  expect(eod).toEqual(expect.arrayContaining([expect.any(iex.EndOfDay)]));
 });
 test("history Intraday", async () => {
-  const intraday = await iex.history("AAPL",{period: "1d"})
-  expect(intraday).toEqual(
-    expect.arrayContaining([expect.any(iex.Intraday)])
-  )
+  const intraday = await iex.history("AAPL", { period: "1d" });
+  expect(intraday).toEqual(expect.arrayContaining([expect.any(iex.Intraday)]));
 });
 test("history Intraday for date ", async () => {
-  const intraday = await iex.history("AAPL",{date: "2019-07-08"})
-  expect(intraday).toEqual(
-    expect.arrayContaining([expect.any(iex.Intraday)])
-  )
+  const intraday = await iex.history("AAPL", { date: "2019-07-08" });
+  expect(intraday).toEqual(expect.arrayContaining([expect.any(iex.Intraday)]));
 });
 test("history EndOfDay for date ", async () => {
-  const intraday = await iex.history("AAPL",{chartByDay:true,date: "2019-07-08"})
+  const intraday = await iex.history("AAPL", {
+    chartByDay: true,
+    date: "2019-07-08",
+  });
   // console.log(intraday.slice(0,2))
-  expect(intraday).toEqual(
-    expect.arrayContaining([expect.any(iex.EndOfDay)])
-  )
+  expect(intraday).toEqual(expect.arrayContaining([expect.any(iex.EndOfDay)]));
 });
 test("iexSymbols", async () => {
   expect(await iex.iexSymbols()).toEqual(
@@ -138,7 +131,7 @@ test("intradayIEXOnly", async () => {
   );
 });
 test("intradayForDate", async () => {
-  expect(await iex.intradayForDate("AAPL","2019-07-02")).toEqual(
+  expect(await iex.intradayForDate("AAPL", "2019-07-02")).toEqual(
     expect.arrayContaining([expect.any(iex.IntradayIEXOnly)])
   );
 });
@@ -169,9 +162,7 @@ test("news", async () => {
   );
 });
 test("ohlc", async () => {
-  expect(await iex.ohlc("AAPL")).toEqual(
-    expect.any(iex.OHLC)
-  );
+  expect(await iex.ohlc("AAPL")).toEqual(expect.any(iex.OHLC));
 });
 // test("peers", async () => {
 //   expect(await iex.peers("AAPL")).toEqual(
@@ -191,8 +182,8 @@ test("priceTarget", async () => {
 test("recommendationTrends", async () => {
   expect(await iex.recommendationTrends("AAPL")).toEqual(
     expect.arrayContaining([expect.any(iex.Recommendation)])
-)
-  });
+  );
+});
 
 test("quote", async () => {
   expect(await iex.quote("AAPL")).toBeInstanceOf(iex.Quote);
@@ -203,10 +194,14 @@ test("sectorPerformance", async () => {
   );
 });
 test("socialSentiment daily", async () => {
-  expect(await iex.socialSentiment("AAPL", "daily", "20190213")).toBeInstanceOf(iex.SocialSentiment);
+  expect(await iex.socialSentiment("AAPL", "daily", "20190213")).toBeInstanceOf(
+    iex.SocialSentiment
+  );
 });
 test("socialSentiment minute", async () => {
-  expect(await iex.socialSentiment("AAPL", "daily", "20190213")).toBeInstanceOf(iex.SocialSentiment);
+  expect(await iex.socialSentiment("AAPL", "daily", "20190213")).toBeInstanceOf(
+    iex.SocialSentiment
+  );
 });
 // test("splits", async () => {
 //   expect(await iex.splits("CNC")).toEqual(

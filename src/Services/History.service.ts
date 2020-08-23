@@ -62,6 +62,7 @@ export const history = async (
     chartLast: lastN,
     chartReset,
     chartSimplify,
+    chartByDay
   });
 
   return data.map((o: KVP) =>

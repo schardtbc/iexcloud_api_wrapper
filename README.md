@@ -182,6 +182,11 @@ Below is a list of the iexcloud APIs that have ([x]) and have not ([ ]) been imp
 | [x] | News
 | [ ] | Crypto
 
+### Treasuries
+|     | Endpoint       | Message Units | per |
+|-----|----------------|---------------:|-----|
+| [x] | Daily Treasury Rates | 1000 | per symbol per date
+
 ### Reference Data
 |     | Endpoint       | Message Units | per |
 |-----|----------------|---------------:|-----|

@@ -162,7 +162,7 @@ test("news", async () => {
   );
 });
 test("ohlc", async () => {
-  expect(await iex.ohlc("AAPL")).toEqual(expect.any(iex.OHLC));
+  expect(await iex.ohlc("T")).toEqual(expect.any(iex.OHLC));
 });
 // test("peers", async () => {
 //   expect(await iex.peers("AAPL")).toEqual(

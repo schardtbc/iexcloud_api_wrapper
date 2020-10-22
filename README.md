@@ -144,6 +144,7 @@ Below is a list of the iexcloud APIs that have ([x]) and have not ([ ]) been imp
 | [x] | Cash Flow |             1000 |per symbol per period
 | [x] | Collections  |             1 |per symbol in  collection
 | [x] | Company  |                 1 |per symbol
+| [x] | CEO Compensation  |       20 |per symbol
 | [x] | Delayed Quote  |           1 |per symbol
 | [x] | Dividends  |              10 |per symbol
 | [x] | Earnings |              1000 |per symbol per period

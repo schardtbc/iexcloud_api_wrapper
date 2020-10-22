@@ -31,9 +31,6 @@ test("book", async () => {
 test("ceoCompensation", async () => {
   expect(await iex.ceoCompensation("AAPL")).toBeInstanceOf(iex.CeoCompensation);
 });
-test("company", async () => {
-  expect(await iex.company("AAPL")).toBeInstanceOf(iex.Company);
-});
 // test("cryptoQuote", async () => {
 //   expect(await iex.cryptoQuote("BTC")).toBeInstanceOf(iex.CryptoQuote);
 // });

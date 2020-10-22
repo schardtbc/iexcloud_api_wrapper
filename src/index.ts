@@ -6,6 +6,7 @@ export * from "./Services/CeoCompensation.service";
 export * from "./Services/Collection.service";
 export * from "./Services/Company.service";
 export * from "./Services/CryptoQuote.service";
+export * from "./Services/DailyTreasuryRates.service";
 export * from "./Services/DEEPAuction.service";
 export * from "./Services/DEEPBook.service";
 export * from "./Services/DEEPOfficialPrice.service";

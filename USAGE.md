@@ -115,6 +115,8 @@ export declare const company: (symbol: string) => Promise<Company>;
 
 export declare const cryptoQuote: (symbol: string) => Promise<CryptoQuote>;
 
+export declare const dailyTreasuryRates: (symbol: string) => Promise<DailyTreasuryRate[]>;
+
 export declare const delayedQuote: (symbol: string) => Promise<DelayedQuote>;
 
 export declare type timePeriod = "next" | "1m" | "3m" | "6m" | "ytd" | "1y" | "2y" | "5y";
@@ -228,4 +230,3 @@ export declare const officialPrice: (symbol: string) => Promise<DEEPOfficialPric
 
 export declare const deepTrades: (symbol: string) => Promise<DEEPTrade[]>;
 ```
-

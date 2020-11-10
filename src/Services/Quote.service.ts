@@ -1,87 +1,77 @@
-import { DynamicObject, iexApiRequest, KVP } from "./iexcloud.service";
+import { iexApiRequest } from './iexcloud.service';
 
-export const quote = async (symbol: string): Promise<Quote> => {
-  const data: KVP = await iexApiRequest(`/stock/${symbol}/quote`);
-
-  return new Quote(data);
-};
+export const quote = (symbol: string) => iexApiRequest<IEXQuote>(`/stock/${symbol}/quote`);
 
 export interface IEXQuote {
   symbol: string;
   companyName: string;
-  calculationPrice: string;
-  open: number;
-  openTime: number;
-  close: number;
-  closeTime: number;
-  high: number;
-  low: number;
-  latestPrice: number;
-  latestSource: string;
+  primaryExchange?: string;
+  calculationPrice: CalculationPrice;
+  open: number | null;
+  openTime: number | null;
+  openSource?: string;
+  close: number | null;
+  closeTime: number | null;
+  closeSource?: string;
+  high: number | null;
+  highTime?: number | null;
+  highSource?: null | string;
+  low: number | null;
+  lowTime?: number | null;
+  lowSource?: null | string;
+  latestPrice: number | null;
+  latestSource: LatestSource;
   latestTime: string;
-  latestUpdate: number;
-  latestVolume: number;
-  iexRealtimePrice: number;
-  iexRealtimeSize: number;
-  iexLastUpdated: number;
-  delayedPrice: number;
-  delayedPriceTime: number;
-  extendedPrice: number;
-  extendedChange: number;
-  extendedChangePercent: number;
-  extendedPriceTime: number;
-  previousClose: number;
-  change: number;
-  changePercent: number;
-  iexMarketPercent: number;
-  iexVolume: number;
-  avgTotalVolume: number;
-  iexBidPrice: number;
-  iexBidSize: number;
-  iexAskPrice: number;
-  iexAskSize: number;
-  marketCap: number;
+  latestUpdate: number | null;
+  latestVolume: number | null;
+  iexRealtimePrice: number | null;
+  iexRealtimeSize: number | null;
+  iexLastUpdated: number | null;
+  delayedPrice: number | null;
+  delayedPriceTime: number | null;
+  oddLotDelayedPrice?: number | null;
+  oddLotDelayedPriceTime?: number | null;
+  extendedPrice: number | null;
+  extendedChange: number | null;
+  extendedChangePercent: number | null;
+  extendedPriceTime: number | null;
+  previousClose: number | null;
+  previousVolume?: number | null;
+  change: number | null;
+  changePercent: number | null;
+  volume?: number;
+  iexMarketPercent: number | null;
+  iexVolume: number | null;
+  avgTotalVolume: number | null;
+  iexBidPrice: number | null;
+  iexBidSize: number | null;
+  iexAskPrice: number | null;
+  iexAskSize: number | null;
+  iexOpen?: number | null;
+  iexOpenTime?: number | null;
+  iexClose?: number | null;
+  iexCloseTime?: number | null;
+  marketCap: number | null;
+  peRatio: number | null;
   week52High: number;
-  week52Low: number;
-  ytdChange: number;
+  week52Low: number | null;
+  ytdChange: number | null;
+  lastTradeTime?: number | null;
+  sector?: string;
+  isUSMarketOpen?: boolean;
 }
 
-export class Quote extends DynamicObject implements IEXQuote {
-  public symbol: string = "";
-  public companyName: string = "";
-  public calculationPrice: string = "";
-  public open: number = 0;
-  public openTime: number = 0;
-  public close: number = 0;
-  public closeTime: number = 0;
-  public high: number = 0;
-  public low: number = 0;
-  public latestPrice: number = 0;
-  public latestSource: string = "";
-  public latestTime: string = "";
-  public latestUpdate: number = 0;
-  public latestVolume: number = 0;
-  public iexRealtimePrice: number = 0;
-  public iexRealtimeSize: number = 0;
-  public iexLastUpdated: number = 0;
-  public delayedPrice: number = 0;
-  public delayedPriceTime: number = 0;
-  public extendedPrice: number = 0;
-  public extendedChange: number = 0;
-  public extendedChangePercent: number = 0;
-  public extendedPriceTime: number = 0;
-  public previousClose: number = 0;
-  public change: number = 0;
-  public changePercent: number = 0;
-  public iexMarketPercent: number = 0;
-  public iexVolume: number = 0;
-  public avgTotalVolume: number = 0;
-  public iexBidPrice: number = 0;
-  public iexBidSize: number = 0;
-  public iexAskPrice: number = 0;
-  public iexAskSize: number = 0;
-  public marketCap: number = 0;
-  public week52High: number = 0;
-  public week52Low: number = 0;
-  public ytdChange: number = 0;
+export enum CalculationPrice {
+  Close = 'close',
+  Previousclose = 'previousclose',
+  SIP = 'sip',
+  Tops = 'tops',
+}
+
+export enum LatestSource {
+  Close = 'Close',
+  IEXRealTimePrice = 'IEX real time price',
+  NA = 'N/A',
+  PreviousClose = 'Previous close',
+  The15MinuteDelayedPrice = '15 minute delayed price',
 }

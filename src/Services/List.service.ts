@@ -1,18 +1,6 @@
-import { iexApiRequest, KVP } from "./iexcloud.service";
-import { Quote } from "./Quote.service";
+import { iexApiRequest } from './iexcloud.service';
+import { IEXQuote } from './Quote.service';
 
-export type ListType =
-  | "mostactive"
-  | "gainers"
-  | "losers"
-  | "iexvolume"
-  | "iexpercent"
-  | "infocus";
+export type ListType = 'mostactive' | 'gainers' | 'losers' | 'iexvolume' | 'iexpercent' | 'infocus';
 
-export const list = async (
-  listType: ListType = "mostactive"
-): Promise<Quote[]> => {
-  const data: KVP[] = await iexApiRequest(`/stock/market/list/${listType}`);
-
-  return data.map((o) => new Quote(o));
-};
+export const list = (listType: ListType = 'mostactive') => iexApiRequest<IEXQuote[]>(`/stock/market/list/${listType}`);

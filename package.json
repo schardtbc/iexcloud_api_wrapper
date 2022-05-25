@@ -53,6 +53,6 @@
     "@types/eventsource": "1.1.2",
     "axios": "0.19.2",
     "dotenv": "8.2.0",
-    "eventsource": "1.0.7"
+    "eventsource": "2.0.2"
   }
 }
